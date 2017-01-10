@@ -1,0 +1,53 @@
+<apex:page standardController="TimeTable__c" sidebar="False" showHeader="true" standardStylesheets="false">
+    
+    <link href="{!URLFOR($Resource.Bootstrapm, 'css/bootstrap.min.css')}" rel="stylesheet" media="screen"/> 
+    <link href="{!URLFOR($Resource.Bootstrapm, 'css/bootstrap.css')}" rel="stylesheet" media="screen"/>  
+
+<apex:form >
+
+<apex:pageBlock >
+    <apex:pageBlockButtons >
+        <apex:commandButton value="Save" action="{!save}" styleClass="btn btn-primary" style="width:80px; height:25px; font-size:12px"/>
+        <apex:commandButton value="Cancel" action="{!cancel}" styleClass="btn btn-primary" style="width:80px; height:25px; font-size:12px"/>
+    </apex:pageBlockButtons>
+    <apex:pageBlockSection title="Timings Information" columns="2">
+        <apex:inputField value="{!TimeTable__c.name}" styleClass="form-control" style="width:160px; height:27px" />
+        <apex:inputfield value="{!TimeTable__c.Service__c}" />
+        <apex:inputfield value="{!TimeTable__c.Travel_Type__c}" styleClass="form-control" style="width:160px; height:27px"/>    
+        <apex:inputfield value="{!TimeTable__c.Class__c}" styleClass="form-control" style="width:160px; height:27px"/>
+        <apex:inputField value="{!TimeTable__c.APrice__c}" styleClass="form-control" style="width:160px; height:27px"/>
+        <apex:inputField value="{!TimeTable__c.AMarkup__c}" styleClass="form-control" style="width:160px; height:27px"/>
+        <apex:inputField value="{!TimeTable__c.AFixedPrice__c}" styleClass="form-control" style="width:160px; height:27px"/>
+        <apex:inputField value="{!TimeTable__c.CPrice__c}" styleClass="form-control" style="width:160px; height:27px"/>
+        <apex:inputField value="{!TimeTable__c.CMarkup__c}" styleClass="form-control" style="width:160px; height:27px"/>
+        <apex:inputField value="{!TimeTable__c.CFixedPrice__c}" styleClass="form-control" style="width:160px; height:27px"/>
+     </apex:pageBlockSection>
+     
+     <apex:pageblockTable value="{!TimeTable__c}" var="a" id="table1" rows="2" >
+         <apex:column headerValue="Haltings" >
+             <apex:inputfield value="{!a.Halting__c}" styleClass="form-control" style="width:160px; height:27px"/>
+         </apex:column>
+         <apex:column headerValue="Arrivals" >
+             <apex:inputField value="{!a.Arrivals__c}" styleClass="form-control" style="width:160px; height:27px"/>
+         </apex:column>   
+         <apex:column headerValue="Daparture" >
+             <apex:inputField value="{!a.Departure__c}" styleClass="form-control" style="width:160px; height:27px"/>
+         </apex:column>
+         <apex:column headerValue="Distance" >
+             <apex:inputField value="{!a.Distance__c}" styleClass="form-control" style="width:160px; height:27px"/>
+         </apex:column>
+         <apex:column headerValue="Price(12yrs above)" >
+             <apex:inputField value="{!a.AFixedPrice__c}" styleClass="form-control" style="width:160px; height:27px"/>
+         </apex:column>
+         <apex:column headerValue="Price(2-11 Children)" >
+             <apex:inputField value="{!a.CFixedPrice__c}" styleClass="form-control" style="width:160px; height:27px" />
+         </apex:column>
+         <apex:column headerValue="NEWTESTING" >
+             <apex:inputField value="{!a.SNo__c}" styleClass="form-control" style="width:160px; height:27px"/>
+         </apex:column> 
+         
+</apex:pageblockTable>
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

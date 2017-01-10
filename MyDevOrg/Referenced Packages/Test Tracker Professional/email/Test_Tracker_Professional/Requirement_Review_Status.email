@@ -1,0 +1,8 @@
+Dear {!Requirement__c.OwnerFullName},
+   The following requirement has been reviewed by your reviewer. Please use the below link to see your review status.
+
+{!Requirement__c.Link}.
+
+
+Regards,
+Test Tracker.

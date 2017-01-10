@@ -1,0 +1,8 @@
+<apex:page controller="actionPollerController">
+  <apex:form >
+      <apex:outputText value="Count : {!count}" id="cntid" /> 
+      <apex:actionStatus startText=" (incrementing...)" stopText=" (done)" id="counterStatus"/>
+      <apex:actionPoller action="{!pollermethod}" reRender="cntid" interval="15" status="counterStatus"/>
+        
+  </apex:form>
+</apex:page>

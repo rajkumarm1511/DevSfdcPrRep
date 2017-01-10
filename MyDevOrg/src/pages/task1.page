@@ -1,0 +1,29 @@
+<apex:page standardController="Opportunity" extensions="MyTask1" sidebar="false" >
+ 
+<apex:form >
+<apex:pageBlock >
+
+<apex:pageBlockSection columns="2" >
+  <apex:inputField value="{!Opportunity.name}"/>
+  <apex:inputField value="{!Opportunity.Probability}"/>
+  <apex:inputField value="{!Opportunity.CloseDate}"/>
+  <apex:inputField value="{!Opportunity.Amount}"/>
+  <apex:inputField value="{!Opportunity.LeadSource}" required="true"/>
+  <apex:inputField value="{!Opportunity.CurrentGenerators__c}" required="true"/>
+ 
+  <apex:inputField value="{!Opportunity.StageName}" />
+  <apex:inputField value="{!Opportunity.OrderNumber__c}"/>
+  <apex:inputField value="{!Opportunity.TrackingNumber__c}"/>
+  <apex:inputField value="{!Opportunity.MainCompetitors__c}"/>
+</apex:pageBlockSection> 
+  
+<apex:pageBlockButtons >
+   <apex:commandButton value="Save The Opportunity" action="{!saveMethod}" />
+   <apex:commandButton value="Cancel" action="{!Cancel}"/>
+  
+   
+</apex:pageBlockButtons>
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page standardController="Service__c" extensions="SelectListCotroller" >
+<apex:form >
+    <apex:pageBlock >
+        <apex:PageBlockButtons >
+            <apex:commandButton value="Save" action="{!save}" title="Save"/>
+            <apex:commandButton value="Cancel" action="{!cancel}" title="Cancel"/>        
+        </apex:PageBlockButtons>
+    <apex:selectList value="{!selectedService}" size="1" title="Available Services" id="sl">
+        <apex:selectOptions value="{!Services}">
+        </apex:selectOptions>
+    </apex:selectList>   
+    
+   <apex:inputField value="{!Service__c.Travel_Type__c}"/> 
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,128 @@
+<apex:page controller="ttp.TTMyDefectsViewController" action="{!retriveDefects}" >
+<apex:form >
+  <apex:pageBlock >
+  <apex:pageMessages />
+      <apex:tabPanel id="myDefectsView">
+          <apex:tab id="assignedDefects" label="Assigned Defects">               
+                <apex:pageBlockTable var="rec" value="{!assignedDefects}">
+                    <apex:column >            
+                        <apex:inputCheckbox value="{!rec.isChecked}" > 
+                            <apex:actionSupport event="onclick" action="{!uncheckPrimaryCheckbox}" rerender="editSection,myDefectsView" status="editSectionStatus"/>
+                        </apex:inputCheckbox>
+                    </apex:column>
+                    <apex:column title="Defect Id" headerValue="Defect ID"> 
+                        <a href="/{!rec.defect.Id}">{!rec.defect.Name}</a>
+                    </apex:column>                    
+                    <apex:column headerValue="Open Date" value="{!rec.defect.ttp__Open_Date__c}"/>
+                    <apex:column headerValue="Close Date" value="{!rec.defect.ttp__Close_Date__c}"/>
+                    <apex:column headerValue="Status" value="{!rec.defect.ttp__Status__c}"/>
+                    <apex:column headerValue="Priority" value="{!rec.defect.ttp__Priority__c}"/>
+                    <apex:column headerValue="Severity" value="{!rec.defect.ttp__Severity__c}"/>
+                    <apex:column headerValue="Is Reproducible" value="{!rec.defect.ttp__Is_Reproducible__c}"/>
+                    <apex:column headerValue="Found In Phase" value="{!rec.defect.ttp__Found_In_Phase__c}"/>
+                    <apex:column headerValue="Fixed In Phase" value="{!rec.defect.ttp__Fixed_In_Phase__c}"/>
+                    <apex:column headerValue="Target Cycle" value="{!rec.defect.ttp__Target_Cycle__c}"/>
+                </apex:pageBlockTable>                 
+                  
+          </apex:tab>
+          <apex:tab id="raisedDefects" label="Raised Defects">
+              <apex:pageBlockTable var="rec" value="{!raisedDefects}">
+                    <apex:column >            
+                        <apex:inputCheckbox value="{!rec.isChecked}" > 
+                            <apex:actionSupport event="onclick" action="{!uncheckPrimaryCheckbox}" rerender="editSection,myDefectsView" status="editSectionStatus"/>
+                        </apex:inputCheckbox>
+                    </apex:column>
+                    <apex:column title="Defect Id" headerValue="Defect ID"> 
+                        <a href="/{!rec.defect.Id}">{!rec.defect.Name}</a>
+                    </apex:column>
+                    
+                    <apex:column headerValue="Open Date" value="{!rec.defect.ttp__Open_Date__c}"/>
+                    <apex:column headerValue="Close Date" value="{!rec.defect.ttp__Close_Date__c}"/>
+                    <apex:column headerValue="Status" value="{!rec.defect.ttp__Status__c}"/>
+                     <apex:column headerValue="Priority" value="{!rec.defect.ttp__Priority__c}"/>
+                    <apex:column headerValue="Severity" value="{!rec.defect.ttp__Severity__c}"/>
+                    <apex:column headerValue="Is Reproducible" value="{!rec.defect.ttp__Is_Reproducible__c}"/>
+                    <apex:column headerValue="Found In Phase" value="{!rec.defect.ttp__Found_In_Phase__c}"/>
+                    <apex:column headerValue="Fixed In Phase" value="{!rec.defect.ttp__Fixed_In_Phase__c}"/>
+                    <apex:column headerValue="Open Date" value="{!rec.defect.ttp__Assigned_To__c}"/>
+                    <apex:column headerValue="Target Cycle" value="{!rec.defect.ttp__Target_Cycle__c}"/>
+                </apex:pageBlockTable>   
+          </apex:tab>
+          
+          <apex:tab id="currentOpenDefects" label="Open Defects"> 
+                <font color="Blue"><apex:outputText >All Defects which are in 'New', 'In Progress' and 'Fixed' Status</apex:outputText></font>              
+                <apex:pageBlockTable var="rec" value="{!openDefects}">
+                    <apex:column >            
+                        <apex:inputCheckbox value="{!rec.isChecked}" > 
+                            <apex:actionSupport event="onclick" action="{!uncheckPrimaryCheckbox}" rerender="editSection,myDefectsView" status="editSectionStatus"/>
+                        </apex:inputCheckbox>
+                    </apex:column>
+                    <apex:column title="Defect Id" headerValue="Defect ID"> 
+                        <a href="/{!rec.defect.Id}">{!rec.defect.Name}</a>
+                    </apex:column>                    
+                    <apex:column headerValue="Open Date" value="{!rec.defect.ttp__Open_Date__c}"/>
+                    <apex:column headerValue="Close Date" value="{!rec.defect.ttp__Close_Date__c}"/>
+                    <apex:column headerValue="Status" value="{!rec.defect.ttp__Status__c}"/>
+                    <apex:column headerValue="Priority" value="{!rec.defect.ttp__Priority__c}"/>
+                    <apex:column headerValue="Severity" value="{!rec.defect.ttp__Severity__c}"/>
+                    <apex:column headerValue="Is Reproducible" value="{!rec.defect.ttp__Is_Reproducible__c}"/>
+                    <apex:column headerValue="Found In Phase" value="{!rec.defect.ttp__Found_In_Phase__c}"/>
+                    <apex:column headerValue="Fixed In Phase" value="{!rec.defect.ttp__Fixed_In_Phase__c}"/>
+                    <apex:column headerValue="Raised By" value="{!rec.defect.CreatedById}"/>
+                    <apex:column headerValue="Assigned To" value="{!rec.defect.ttp__Assigned_To__c}"/>
+                    <apex:column headerValue="Target Cycle" value="{!rec.defect.ttp__Target_Cycle__c}"/>
+                </apex:pageBlockTable>                 
+                  
+          </apex:tab>
+          
+          
+      </apex:tabPanel>
+      
+    
+      <!-- Edit Section -->
+      <apex:actionstatus id="editSectionStatus"> 
+          <apex:facet name="start">
+               <apex:image url="{!URLFOR($Resource.ttp__TT_Images,'TTPageLoadImg.gif')}" width="25" height="25" alt="Opening" />    
+          </apex:facet>
+          
+          <apex:facet name="stop">
+              <apex:outputPanel id="editSection" >
+                  <apex:pageBlockSection columns="1" >
+                      <apex:pageBlockSectionItem >
+                          <apex:outputLabel >Summary</apex:outputLabel>
+                      </apex:pageBlockSectionItem>
+                      <apex:pageBlockSectionItem >
+                          
+                          <apex:inputtextarea readonly="true" value="{!checkedInstance.defect.ttp__Summary__c}"    style="margin-top: 2px; margin-bottom: 2px; height: 50px; margin-left: 2px; margin-right: 2px; width: 300px"/>                         
+                      </apex:pageBlockSectionItem>
+                  </apex:pageblockSection>
+                  <apex:pageBlockSection > 
+                      <apex:pageBlockSectionItem >
+                          <apex:outputLabel >Description</apex:outputLabel>
+                      </apex:pageBlockSectionItem>  
+                      
+                      <apex:pageBlockSectionItem >
+                          <apex:outputLabel >New Comment</apex:outputLabel>
+                      </apex:pageBlockSectionItem> 
+                      <apex:pageBlockSectionItem >
+                          
+                          <apex:inputTextarea readonly="true" value="{!checkedInstance.defect.ttp__Description__c}"  style="margin-top: 2px; margin-bottom: 2px; height: 100px; margin-left: 2px; margin-right: 2px; width: 300px"/>                          
+                      </apex:pageBlockSectionItem>
+                    
+                       <apex:pageBlockSectionItem >
+                            
+                          <apex:inputTextarea value="{!commentValue}"  style="margin-top: 2px; margin-bottom: 2px; height: 100px; margin-left: 2px; margin-right: 2px; width: 300px"/>                          
+                      </apex:pageBlockSectionItem>                  
+                  </apex:pageBlockSection>    
+              </apex:outputPanel>
+          </apex:facet>    
+      </apex:actionstatus>   
+      
+      
+          <apex:pageBlockButtons Location="bottom">
+                <apex:commandButton value="Add Comment" action="{!addComment}" rerender=""/>               
+                <apex:commandButton value="Close Defect"  action="{!closeDefect}"/> 
+           </apex:pageBlockButtons>                                                   
+  </apex:pageBlock>
+</apex:form>  
+</apex:page>

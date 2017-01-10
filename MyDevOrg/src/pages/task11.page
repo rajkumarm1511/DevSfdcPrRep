@@ -1,0 +1,25 @@
+<apex:page Controller="MyTask11" sidebar="false">
+<apex:form >
+<apex:pageBlock >
+
+<apex:pageBlockSection columns="2" >
+  <apex:inputField value="{!Opportunity.name}"/>
+
+  <apex:inputField value="{!Opportunity.CloseDate}"/>
+  <apex:inputField value="{!Opportunity.Amount}"/>
+  <apex:inputField value="{!Opportunity.LeadSource}" />
+  <apex:inputField value="{!Opportunity.CurrentGenerators__c}" />
+
+  <apex:inputField value="{!Opportunity.StageName}" />
+  <apex:inputField value="{!Opportunity.OrderNumber__c}"/>
+  <apex:inputField value="{!Opportunity.TrackingNumber__c}"/>
+  <apex:inputField value="{!Opportunity.MainCompetitors__c}"/>
+</apex:pageBlockSection> 
+  
+<apex:pageBlockButtons >
+   <apex:commandButton value="Update The Opportunity" action="{!UpdateMethiod}" />
+</apex:pageBlockButtons>
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

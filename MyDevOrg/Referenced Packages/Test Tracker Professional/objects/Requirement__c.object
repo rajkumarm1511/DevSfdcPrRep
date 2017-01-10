@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>requirementEdit</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Requirements which needs to be tested in the testing</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Class__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Super set of the requirement types</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Requirement Group(Top Level)</inlineHelpText>
+        <label>Class</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Functional</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Non Functional</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Others</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Clear_Requirement__c</fullName>
+        <deprecated>false</deprecated>
+        <description>More detailed requirement</description>
+        <externalId>false</externalId>
+        <label>Clear Requirement</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>20</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Brief description of the requirement</description>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Direct_Cover_Status__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Whether the requirement covered in the test.</description>
+        <externalId>false</externalId>
+        <label>Direct Cover Status</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Enhancement__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>This requirement is for the new enhancement which was created from the defect</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enhancement for which the requirement is created</inlineHelpText>
+        <label>Enhancement</label>
+        <referenceTo>Enhancement__c</referenceTo>
+        <relationshipLabel>Requirements</relationshipLabel>
+        <relationshipName>Requirements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Is_Child__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>IF the requirement is child this should be checked</description>
+        <externalId>false</externalId>
+        <label>Is Child</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Make_New_Version__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>To make a new copy of the requirement to keep track of the changes</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable to capture the version</inlineHelpText>
+        <label>Make New Version</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Parent_Requirement__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Parent requirement</description>
+        <externalId>false</externalId>
+        <label>Parent Requirement</label>
+        <referenceTo>Requirement__c</referenceTo>
+        <relationshipLabel>Immediate Sub Requirements</relationshipLabel>
+        <relationshipName>Immediate_Sub_Requirements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Priority__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Priority to develop and test the requirement by the development and testing team</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Urgency of the requirement to be tested</inlineHelpText>
+        <label>Priority</label>
+        <picklist>
+            <picklistValues>
+                <fullName>High</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Project_Code_Original__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This is to maintain the project code when the new requirement is created.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This will not be displayed in the UI. Since many classes and visualforce pages are linked with the &apos;Project Code&apos; field, we cannot change that field as normal text field from the formula field. so created new field to keep the same value and use.</inlineHelpText>
+        <label>Project Code Original</label>
+        <length>8</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Project_Code_Original__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Project Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Release_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This is for the release field updation on the requirement record when the record has been created</description>
+        <externalId>false</externalId>
+        <formula>Target_Cycle__r.Release__r.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Release Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Requirement_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <displayFormat>RQ-{00000}</displayFormat>
+        <externalId>false</externalId>
+        <label>Requirement ID</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Requirement_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Type of the requirement, whether functional or design</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Sub Category from the requirement class</inlineHelpText>
+        <label>Requirement Type</label>
+        <picklist>
+            <controllingField>Class__c</controllingField>
+            <picklistValues>
+                <fullName>Performance</fullName>
+                <default>false</default>
+                <controllingFieldValues>Non Functional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Software</fullName>
+                <default>false</default>
+                <controllingFieldValues>Others</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <controllingFieldValues>Others</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Use cases</fullName>
+                <default>false</default>
+                <controllingFieldValues>Functional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Functional capabilities</fullName>
+                <default>false</default>
+                <controllingFieldValues>Functional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Business rules</fullName>
+                <default>false</default>
+                <controllingFieldValues>Functional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Usability</fullName>
+                <default>false</default>
+                <controllingFieldValues>Non Functional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reliability</fullName>
+                <default>false</default>
+                <controllingFieldValues>Non Functional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Supportability</fullName>
+                <default>false</default>
+                <controllingFieldValues>Non Functional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Security</fullName>
+                <default>false</default>
+                <controllingFieldValues>Non Functional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hardware</fullName>
+                <default>false</default>
+                <controllingFieldValues>Others</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Testing</fullName>
+                <default>false</default>
+                <controllingFieldValues>Others</controllingFieldValues>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Review_Status__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This will tell the user to understand that the particular requirement is reviewed or not</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is Requirement approved?</inlineHelpText>
+        <label>Review Status</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Reviewer_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Target_Cycle__r.Release__r.Project__r.Project_Manager__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Reviewer ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reviewer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Requierment should be approved byt the reviewer for the further process.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>User, Who supposed to approve the requirement. Auto populated from the project manager field.</inlineHelpText>
+        <label>Reviewer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Requirements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Root_Requirement__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>This requirement is the root for all other requirements in the versioning control</description>
+        <externalId>false</externalId>
+        <label>Root Requirement</label>
+        <referenceTo>Requirement__c</referenceTo>
+        <relationshipLabel>Requirements (Root Requirement)</relationshipLabel>
+        <relationshipName>Past_Requirements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Current status of the requirement</inlineHelpText>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New</fullName>
+                <default>true</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Target_Cycle__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Cycle is which this requirement to be developed and tested</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Cycle in which this requirement supposed to be tested</inlineHelpText>
+        <label>Target Cycle</label>
+        <referenceTo>Cycle__c</referenceTo>
+        <relationshipLabel>Targeted Requirements</relationshipLabel>
+        <relationshipName>Targeted_Requirements</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Target_Release__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Target Release</label>
+        <referenceTo>Release__c</referenceTo>
+        <relationshipLabel>Requirements</relationshipLabel>
+        <relationshipName>Requirements</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Tracebility__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>whether this requirement should comes under the RTM.</description>
+        <externalId>false</externalId>
+        <label>Tracebility</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Version_Number__c</fullName>
+        <defaultValue>1</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Modified version number</inlineHelpText>
+        <label>Version Number</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Requirement</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Class__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Review_Status__c</columns>
+        <columns>Status__c</columns>
+        <columns>Target_Cycle__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Title</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Requirements</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Priority__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Review_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Version_Number__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Review_Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Version_Number__c</lookupDialogsAdditionalFields>
+        <lookupFilterFields>NAME</lookupFilterFields>
+        <lookupFilterFields>Target_Cycle__c</lookupFilterFields>
+        <searchResultsAdditionalFields>Priority__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Version_Number__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <sharingReasons>
+        <fullName>TTProjectGroup__c</fullName>
+        <label>TTProjectGroup</label>
+    </sharingReasons>
+    <validationRules>
+        <fullName>Avoid_Other_Prj_Entity_Association</fullName>
+        <active>true</active>
+        <description>Should avoid the requirement is assigned to other project entities</description>
+        <errorConditionFormula>IF( ISNULL(Project_Code_Original__c),FALSE,IF((Project_Code_Original__c != Target_Cycle__r.Project_Code__c),TRUE,FALSE ))</errorConditionFormula>
+        <errorDisplayField>Target_Cycle__c</errorDisplayField>
+        <errorMessage>Requirement cannot be reassigned to other project Cycles</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Hierarchy_Check</fullName>
+        <active>true</active>
+        <description>Requirement hierarchy should be only one level down.. no more levels should be allowed</description>
+        <errorConditionFormula>NOT(ISBLANK(Parent_Requirement__r.Parent_Requirement__c))</errorConditionFormula>
+        <errorMessage>No more hierarchy is allowed in the requirement</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Target_Cycle_Empty</fullName>
+        <active>true</active>
+        <description>Actual cycle should not be empty</description>
+        <errorConditionFormula>ISBLANK( Target_Cycle__c )</errorConditionFormula>
+        <errorMessage>Target cycle should not be empty</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Assign_Unit</fullName>
+        <availability>online</availability>
+        <description>Assign the requirement to the test unit</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Assign Unit</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ttp__unitRequirementAssoc?entity=Requirement&amp;id={!Requirement__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>TT_Link_Defect</fullName>
+        <availability>online</availability>
+        <description>To make the link with the existing or new defect</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Link Defect</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/ttp__addDefectLink?entityId={!Requirement__c.Id}&amp;entity=requirement</url>
+    </webLinks>
+    <webLinks>
+        <fullName>TT_Version_History</fullName>
+        <availability>online</availability>
+        <description>To list all the requirement versions and select any one as an active version</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Version History</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/ttp__reqVersionHistory?reqId={!Requirement__c.Id}</url>
+    </webLinks>
+</CustomObject>

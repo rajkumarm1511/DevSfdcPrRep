@@ -1,0 +1,23 @@
+<apex:page standardController="Account" extensions="GeneratePDFExtention" >
+<apex:form >
+    <apex:pageblock title="List of Account Records">        
+            <apex:pageBlockTable value="{!lstacc}" var="a">
+                <apex:column value="{!a.Name}" />
+                <apex:column value="{!a.AccountNumber}" />
+                
+                <apex:column headerValue="Rating">                    
+                    <div style="background-color:{!If(a.Rating =='Hot','#7CFC00',If(a.Rating =='Warm','#33FFCC','#FFFF66'))};">{!a.Rating}</div>
+                </apex:column> 
+                
+                <apex:column value="{!a.Type}"/>
+                <apex:pageblockTable value="{!a.opportunities}" var="opp">
+                    <apex:column value="{!opp.Name}"/>
+                    <apex:column value="{!opp.Amount}"/>
+                    <apex:column value="{!opp.StageName}"/>
+                    <apex:column value="{!opp.CloseDate}"/>                   
+                </apex:pageblockTable>    
+            </apex:pageBlockTable>            
+       
+    </apex:pageblock> 
+</apex:form>
+</apex:page>

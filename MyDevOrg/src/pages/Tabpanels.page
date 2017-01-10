@@ -1,0 +1,21 @@
+<apex:page StandardController="Account" tabStyle="Account" sidebar="false">
+
+<style>
+.tabstyle 
+{
+    background-color:yellow;
+    color:blue;
+    font-size:30pt
+}
+
+</style>
+
+<apex:tabPanel switchType="client" selectedTab="name1" id="tabpanel" styleClass="tabstyle">
+    <apex:tab label="Accounts" name="name1" id="tab1"> Content of Tab one</apex:tab>
+    <apex:tab label="Contacts" name="name2" id="tab2"> Content of Tab two</apex:tab>
+    <apex:tab label="Opportunities" name="name3" id="tab3"> Content of Tab three</apex:tab>
+    <apex:tab label="Leads" name="name4" id="tab4"> Content of Tab four</apex:tab>
+    <apex:tab label="Cases" name="name5" id="tab5"> Content of Tab five</apex:tab>    
+</apex:tabPanel>
+ 
+</apex:page>

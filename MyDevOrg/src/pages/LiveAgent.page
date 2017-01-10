@@ -1,0 +1,18 @@
+<apex:page >
+       
+<!-- Deployment name : Deploy3 -->
+
+<script type='text/javascript' src='https://c.la2c1.salesforceliveagent.com/content/g/js/31.0/deployment.js'></script>
+<script type='text/javascript'>
+liveagent.init('https://d.la2c1.salesforceliveagent.com/chat', '572i0000000Roml', '00Di0000000g8o5');
+</script>
+    
+<!-- Button name : Case Create Chat -->  
+<img id="liveagent_button_online_573i0000000Rrh4" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('573i0000000Rrh4')" src="https://proquestchat-developer-edition.na15.force.com/proquestchat/resource/1405927412000/ChatOnline" /><img id="liveagent_button_offline_573i0000000Rrh4" style="display: none; border: 0px none; " src="https://proquestchat-developer-edition.na15.force.com/proquestchat/resource/1405927438000/ChatOffline" />
+<script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('573i0000000Rrh4', document.getElementById('liveagent_button_online_573i0000000Rrh4'));
+liveagent.showWhenOffline('573i0000000Rrh4', document.getElementById('liveagent_button_offline_573i0000000Rrh4'));
+});</script>
+
+</apex:page>

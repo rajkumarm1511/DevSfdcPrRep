@@ -1,0 +1,8 @@
+Dear {!Test_Group__c.OwnerFullName},
+The following Test Group has been approved by your approver.
+
+Please use the below link to access the record.
+{!Test_Group__c.Link}
+
+Regards,
+Test Tracker.

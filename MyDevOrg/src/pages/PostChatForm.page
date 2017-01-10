@@ -1,0 +1,22 @@
+<apex:page showHeader="false">
+<h1>Post Chat Page</h1>
+<!-- These variables are passed to the post-chat page and can be used to customize your post-chat experience -->
+Request Time: <apex:outputText value="{!$CurrentPage.parameters.requestTime}" /><br/>
+Start Time: <apex:outputText value="{!$CurrentPage.parameters.startTime}" /><br/>
+Button Id: <apex:outputText value="{!$CurrentPage.parameters.buttonId}" /><br/>
+Deployment Id: <apex:outputText value="{!$CurrentPage.parameters.deploymentId}" /><br/>
+Last Visited Page: <apex:outputText value="{!$CurrentPage.parameters.lastVisitedPage}" /><br/>
+Original Referer: <apex:outputText value="{!$CurrentPage.parameters.originalReferrer}" /><br/>
+Latitude: <apex:outputText value="{!$CurrentPage.parameters.latitude}" /><br/>
+Longitude: <apex:outputText value="{!$CurrentPage.parameters.longitude}" /><br/>
+City: <apex:outputText value="{!$CurrentPage.parameters.city}" /><br/>
+Region: <apex:outputText value="{!$CurrentPage.parameters.region}" /><br/>
+Country: <apex:outputText value="{!$CurrentPage.parameters.country}" /><br/>
+Organization: <apex:outputText value="{!$CurrentPage.parameters.organization}" /><br/>
+Transcript: <apex:outputText value="{!$CurrentPage.parameters.transcript}" /><br/>
+Disconnected By: <apex:outputText value="{!$CurrentPage.parameters.disconnectedBy}" /><br/>
+Chat Key: <apex:outputText value="{!$CurrentPage.parameters.chatKey}" /><br />
+40Chat Details: <apex:outputText value="{!$CurrentPage.parameters.chatDetails}" /><br/>
+Error: <apex:outputText value="{!$CurrentPage.parameters.error}" /><br />
+<!-- Implement your post-chat message, form, or survey here -->
+</apex:page>

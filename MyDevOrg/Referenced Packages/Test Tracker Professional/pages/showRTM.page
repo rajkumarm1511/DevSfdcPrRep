@@ -1,0 +1,59 @@
+<apex:page standardController="ttp__Cycle__c" extensions="ttp.RTMController">
+  <apex:sectionHeader title="Requirement Traceability Matrix"/>
+  
+  
+  <script>
+      function extract_method()
+      {
+          window.open("/apex/ttp__RTMResult?id="+<apex:outputText value="{!cycleIdInString}" />);   
+      }
+  </script>
+  <apex:form >   
+    
+      <apex:pageblock >
+          <apex:pageblocksection columns="1" title="Header" collapsible="false" >
+              <apex:pageblockSectionItem >
+                   <apex:outputLabel value="Cycle Name"/><apex:outputfield value="{!ttp__Cycle__c.Name}" />                                     
+              </apex:pageblockSectionItem>
+              <apex:pageblockSectionItem >
+                  <apex:outputLabel value="Cycle ID"/><apex:outputfield value="{!ttp__Cycle__c.ttp__Cycle_ID__c}" />
+              </apex:pageblockSectionItem>
+              <apex:pageblockSectionItem >
+                  <apex:outputLabel value="Start Date"/><apex:outputfield value="{!ttp__Cycle__c.ttp__Start_Date__c}" />
+              </apex:pageblockSectionItem>
+              <apex:pageblockSectionItem >
+                   <apex:outputLabel value="End Date"/><apex:outputfield value="{!ttp__Cycle__c.ttp__End_Date__c}" />    
+              </apex:pageblockSectionItem>
+          </apex:pageblocksection>
+          <apex:pageblockButtons >
+              <apex:commandButton value="Back to Cycle" action="{!backToCycle}"/>
+               <apex:commandButton value="Export" onclick="javascript:extract_method()"/>
+          </apex:pageblockButtons>
+          <apex:pageblocksection columns="1" collapsible="false" >
+              <apex:pageblockTable value="{!listRequirements}" var="Req" border="10Px">
+                  <apex:column headerValue="Requirement / Status">
+                      <a href="/{!Req.Id}">{!Req.Requirement_ID__c}</a>&nbsp; <b>/</b> &nbsp; <font color="Green"><b>{!Req.ttp__Status__c}</b></font><br/>
+                  </apex:column>
+                  <apex:column headerValue="Test Scenario(s)  /  Result">
+                      <apex:repeat value="{!Req.ttp__Test_Scenarios__r}" var="testScenario">
+                          <a href="/{!testScenario.Id}">{!testScenario.Name}</a>&nbsp; <b>/</b> &nbsp; <font color="Green"><b>{!testScenario.ttp__Result__c}</b></font><br/>                                       
+                      </apex:repeat>                                                                           
+                  </apex:column> 
+                  <apex:column headerValue="Test Run(s) / Status"> 
+                      <apex:repeat value="{!requirementTestRunMap[Req.Id]}" var="testRun">
+                      
+                          <a href="/{!testRun.Id}"><apex:outputText value="{!testRun.Name}" /></a>&nbsp; <b>/</b> &nbsp; <font color="Green"><b>{!testRun.ttp__Status__c}</b></font><br/>                                                                
+                      </apex:repeat>
+                  </apex:column>                 
+                  
+                  <apex:column headerValue="Defect(s) / Status">
+                      <apex:repeat value="{!Req.DefectRequirementLinks__r}" var="defectLink">
+                          <a href="/{!defectLink.ttp__Parent_Defect__r.Id}">{!defectLink.ttp__Parent_Defect__r.Name}</a>&nbsp; <b>/</b> &nbsp; <font color="Green"><b>{!defectLink.ttp__Parent_Defect__r.ttp__Status__c}</b></font><br/>                            
+                      </apex:repeat>
+                  </apex:column>
+                  
+              </apex:pageblockTable>       
+          </apex:pageblocksection>
+      </apex:pageblock>
+  </apex:form>        
+</apex:page>

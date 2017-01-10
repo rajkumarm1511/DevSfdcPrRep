@@ -1,0 +1,34 @@
+<apex:page controller="TestingJavascript" id="pg">
+
+<script>
+
+function getVal()
+{
+    var a = document.getElementById('{!$Component.pg.frm.pgb.aname}').value;
+    alert("hi");
+    if(a == '')
+    {
+        alert('Pleas Enter a Value in Account Name field');
+    }
+    else
+    {
+       alert('You entered value is ---------------'+a);
+    }
+}
+</script>
+  
+  <apex:form id="frm">
+  <b>{!$Profile.Name}<br />  <br />
+     {!$User.FirstName}<br />
+     {!$UserRole.Name}<br /> </b>
+  <apex:pageblock title="Javascript Function" id="pgb">
+  <apex:inputText value="{!accname}" id="aname"/>
+  <apex:inputText value="{!accAdress}" />
+  <apex:inputCheckbox value="{!chkBox}"/>
+  <apex:commandButton value="Go" action="{!Go}" onclick="getVal()"/>
+  
+  
+  </apex:pageblock>
+  
+  </apex:form>
+</apex:page>

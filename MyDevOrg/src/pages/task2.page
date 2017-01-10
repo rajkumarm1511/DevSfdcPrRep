@@ -1,0 +1,24 @@
+<apex:page standardController="OpportunityLineItem" >
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockButtons >
+<apex:commandButton value="Add Opportunity" action="{!save}"/>
+</apex:pageBlockButtons>
+<apex:pageBlockSection title="Products List">
+<apex:repeat value="{!OpportunityLineItem}" var="opl">
+    
+  
+    <apex:inputfield value="{!opl.Quantity}" />
+    <apex:inputfield value="{!opl.UnitPrice}" />
+    <apex:inputfield value="{!opl.Subtotal}" />
+    <apex:inputfield value="{!opl.TotalPrice}" />
+    
+ </apex:repeat>
+
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+
+</apex:form>
+
+</apex:page>

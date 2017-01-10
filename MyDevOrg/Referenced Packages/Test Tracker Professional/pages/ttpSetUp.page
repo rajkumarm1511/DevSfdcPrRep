@@ -1,0 +1,62 @@
+<apex:page >
+<apex:sectionHeader title="Post Installation Configurations"/>
+<b><font size="3px" color="Green" family="verdana">Thank you for installing 'Test Tracker Professional'. Please complete the final configurations as below.</font></b><br/>
+  <apex:pageBlock title="Users & Security" helpTitle="More Help for Test Tracker Professional" helpUrl="http://testtrackerprofessional.blogspot.com" >
+      
+      <apex:pageblockSection title="Profile Mapping"  columns="1">
+          <p><font color="darkblue" family="verdana">
+              <ol><li>Test Tracker Professional controls the access for different level of users based on the profile permissions and project users.</li>
+                  <li>Profile permissions are already mapped with the respective profiles in your organization, when the installation wizard runs.</li>
+                  <li>So, follow the below mapping for the users in your organization.</li></ol>
+                  
+                  <center><table border="1">
+                      <tr><th>User Levels</th><th>Profile Permissions</th><th>Role</th></tr>
+                      <tr><td>Project Managers and Project in Charge</td><td>TTP Project Leaders</td><td>Control Project's Requirements, Releases, Cycles. Not to work with any QA Related activities</td></tr>
+                      <tr><td>QA Leader</td><td>TTP QA Leader</td><td>Control the testing Process by defining Test Plan, Test Unit, Test Groups, etc.</td></tr>
+                      <tr><td>Administrator</td><td>TTP Administrator</td><td>Who will controll access and give support for all the projects. This user will have all the access to all projects entities(Super User) </td></tr>                                                                  
+                      <tr><td>Support</td><td>TTP Support</td><td>This user will have ready only access for all the project's and its related entities, only to give the assistance</td></tr> 
+                      <tr><td>Tester And Developer</td><td>TTP Resource</td><td>Who will work on writing Test Scenarios, Test Steps, Execute the test scenarios in the form of Test Runs, log, track the Defects and close the Defects</td></tr>                                             
+                  </table></center>                 
+           </font></p>           
+      </apex:pageblockSection>            
+  </apex:pageBlock>
+
+  <apex:pageBlock title="Home Page">
+      <apex:pageblockSection title="Add My Personal Folder in Sidebar"  columns="1">
+           <font color="darkblue" family="verdana">After the installation administrator must add the home page compoent called 'My Personal Folder' in the existing<br/> home page layout to show it to the users.</font>
+           
+           <br/><br/><font color="darkblue" family="verdana"><u><i>Steps to add 'My Personal Folder'.</i></u></font>
+           
+           <br/><br/><b><font color="darkblue" family="verdana">Goto Setup -> Customize -> Home -> HomePage Layouts -> Choose the custom layout in which you want<br/> to show your My Personal Folder Component -> Click Edit -> Enable'My Personal Folder' Checkbox -> Click Save.</font></b>
+          <apex:image url="{!URLFOR($Resource.ttp__TT_Images, 'myPersonalFolderComponent.PNG')}" alt="WARNING" />
+      </apex:pageblockSection>
+  </apex:pageblock>
+  
+  <apex:pageBlock title="Approval Processes" >
+      <apex:pageblockSection columns="1">
+          <p><font color="darkblue" family="verdana">Test Tracker Professional uses the salesforce Automation tool for the following approvals.</font></p>   
+            <b><font color="green" family="verdana"><ol>
+            <li>Enhancement Approval</li>
+            <li>Requirement Review</li>
+            <li>Test Group Approval</li>
+            </ol></font></b>
+          <p><font color="darkblue" family="verdana">Approval process creation steps are explained in the below respective screen for each approval process. Follow the steps as in the below screen.
+          All the necessary actions for each approval processes are available in the package. So, as an administrator you need only to create the approval processes with the existing actions and email templates.</font></p>  
+          <br/>
+     </apex:pageblockSection>     
+          <apex:pageblockSection title="Enhancement Approval"  columns="1">
+          <h3>Following Screen shows the required information to create Approval process for the <br/>Enhancement Approval</h3>
+          <apex:image url="{!URLFOR($Resource.ttp__TT_Images, 'enhancementApprovalprocess.png')}" alt="WARNING" />
+          
+      </apex:pageblockSection>
+      <apex:pageblockSection title="Requirement Review"  columns="1">
+          <h3>Following Screen shows the required information to create Approval process for the <br/>Requirement review </h3>
+          <apex:image url="{!URLFOR($Resource.ttp__TT_Images, 'requirementReviewProcess.png')}" alt="WARNING" />  
+      </apex:pageblockSection>
+      
+      <apex:pageblockSection title="Test Group Approval" columns="1">
+          <h3>Following Screen shows the required information to create Approval process for the <br/>Test Group Approval</h3>
+          <apex:image url="{!URLFOR($Resource.ttp__TT_Images, 'testGroupApprovalProcess.png')}" alt="WARNING" />
+      </apex:pageblockSection>
+  </apex:pageBlock>
+</apex:page>

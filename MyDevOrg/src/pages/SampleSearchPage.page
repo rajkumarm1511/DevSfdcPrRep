@@ -1,0 +1,18 @@
+<apex:page controller="SampleSearch" sidebar="false">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Search Records from Case" >
+                <apex:outputLabel value="Enter Case Status" style="font-size:12px;"></apex:outputLabel>
+                <apex:inputText value="{!caseStatus}" style="font-size:12px;"/> 
+                <apex:outputLabel value="Enter Case Priority" style="font-size:12px;"></apex:outputLabel>
+                <apex:inputText value="{!priority}" style="font-size:12px;"/>               
+              <center><apex:commandButton action="{!search}" value="Start Search" style="width:100px; height:25px; font-size:12px; background:yellow;"/>   </center>
+            </apex:pageBlockSection>
+            <apex:pageBlockTable value="{!listCases}" var="c">
+                <apex:column value="{!c.CaseNumber}"/>
+                <apex:column value="{!c.Status}"/>
+                <apex:column value="{!c.Priority}"/>            
+            </apex:pageBlockTable>  
+        </apex:pageBlock>    
+    </apex:form>    
+</apex:page>

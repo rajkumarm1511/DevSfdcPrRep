@@ -1,0 +1,84 @@
+<apex:page standardController="Account" extensions="Checkcontroller" tabStyle="Account" id="pg">
+<style>
+   .errorMessage
+   {
+       background-color: yellow; color:red; 
+       background-image:none;
+       font-weight:bold;
+       font-size: 15px
+   }
+</style>
+
+<script>
+
+    var selectedvals = [];
+    function getVal(aname, ck)
+    {
+        
+        //alert('hi');
+        var accId = document.getElementById(aname).value;
+        
+        if(ck.checked)
+        {            
+            selectedvals.push(accId);
+        }
+        else
+        {
+            for(i=0; i<selectedvals.length; i++)
+            {
+                if(selectedvals[i] == accId)
+                {
+                    selectedvals.splice(i, 1);
+                }
+            }
+        }                
+        document.getElementById('{!$Component.pg.frm.pgblk.hid}').value = selectedvals;
+        //alert(document.getElementById('{!$Component.pg.frm.pgblk.sam}').value);
+        
+    }
+</script>
+ 
+    <apex:messages styleClass="errorMessage"/>
+    <apex:form id="frm">
+        <apex:sectionHeader title="Account Edit" subtitle="{!Account.name}"/>
+        
+        <apex:pageBlock title="{!Account.name}" helpTitle="Help on this page" helpUrl="http://www.google.com" rendered="true" id="pgblk">        
+            
+            <apex:pageBlockSection columns="2" title="Account Information">
+                <apex:inputField value="{!Account.name}" id="Name"/>
+                <apex:inputField value="{!Account.BillingStreet}"/>
+                <apex:inputField value="{!Account.billingcity}"/>                      
+                <apex:inputField value="{!Account.billingState}"/>
+                <apex:inputField value="{!Account.billingcountry}"/>  
+                <apex:inputField value="{!Account.billingPostalCode}"/> 
+                <apex:outputText value="{!$User.FirstName} {!$User.LastName} {!$User.Email}"/>                  
+            </apex:pageBlockSection>  
+              
+            <apex:pageblockButtons location="both">
+                <apex:commandButton title="Search" value="Search" action="{!search}"/>  
+                <apex:commandButton title="Save" value="Save" action="{!save}" />  
+                <apex:commandButton title="Cancel" value="Cancel" action="{!Cancel}" />       
+            </apex:pageblockButtons>
+            
+            <apex:pageblockTable value="{!lstAccounts}" var="acc" id="pgblktbl">
+                
+                <apex:column id="cool">
+                    <apex:inputhidden value="{!acc.id}" id="accId"/>
+                </apex:column>                
+                
+                <apex:column headerValue="Select">
+                    <apex:inputcheckbox id="chk" onclick="getVal('{!$Component.accId}', this)" />
+                </apex:column>
+                
+                <apex:column headerValue="Account Name" headerClass="errorMessage" id="colname"> 
+                    <apex:outputLink value="/{!acc.Id}" id="colid">{!acc.name}</apex:outputLink>
+                </apex:column>                
+            </apex:pageblockTable>
+            
+         <apex:inputText value="{!selectedIds}" id="hid"/> 
+    
+        </apex:pageBlock>
+        
+        
+    </apex:form>
+</apex:page>

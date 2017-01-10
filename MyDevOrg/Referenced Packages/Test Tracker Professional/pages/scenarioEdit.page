@@ -1,0 +1,27 @@
+<apex:page standardController="ttp__Test_Scenario__c" extensions="ttp.TTScenarioExtController" action="{!redirectURL}"  >
+        <!-- Details Edit section --> 
+        <apex:form id="editForm">
+        <apex:pageBlock title="Scenario Edit" tabStyle="ttp__Test_Scenario__c" mode="Edit" >
+        <apex:pagemessages />
+            <!--Edit Buttons will be displayed when the page shows the edit fields -->
+            <apex:pageBlockButtons id="scenarioEditButtons">
+                <apex:commandButton id="Save" value="Save" action="{!Save}" />    
+                <apex:commandButton id="Cancel" value="Cancel" action="{!Cancel}" />            
+            </apex:pageBlockButtons>
+            
+            <!-- Scenario Detail section -->
+            <apex:pageblockSection title="Informations" >                            
+<!--                <apex:inputField value="{!TT_Test_Scenario__c.Name}" required="true"/> -->                 
+                <apex:inputField value="{!ttp__Test_Scenario__c.ttp__Objective__c}" style="height: 80px; width: 250px"/>
+                <apex:inputField value="{!ttp__Test_Scenario__c.ttp__Result__c}"/>
+                <apex:inputField value="{!ttp__Test_Scenario__c.ttp__Configuration__c}"/>                 
+                 <apex:inputField value="{!ttp__Test_Scenario__c.ttp__Requirement__c}" />                 
+                 <apex:inputField value="{!ttp__Test_Scenario__c.ttp__Allowed_Runs__c}" required="true"/> 
+                 <apex:inputField value="{!ttp__Test_Scenario__c.ttp__Test_Group__c}" required="true"/>                                           
+            </apex:pageblockSection>   
+            <apex:pageblockSection title="Detail" columns="1">
+                <apex:inputTextarea value="{!ttp__Test_Scenario__c.ttp__Description__c}" richText="true" style="margin-top: 2px; margin-bottom: 2px; height: 60px; margin-left: 2px; margin-right: 2px; width: 250px"/>
+            </apex:pageblockSection>                   
+        </apex:pageBlock>        
+        </apex:form>                 
+</apex:page>

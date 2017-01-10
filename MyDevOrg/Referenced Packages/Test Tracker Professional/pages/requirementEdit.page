@@ -1,0 +1,47 @@
+<apex:page standardController="ttp__Requirement__c" extensions="ttp.TTRequirementExtController" action="{!redirectURL}"  >
+        <!-- Details Edit section --> 
+        <apex:form id="editForm">
+        <apex:pageBlock title="Requirement Edit" tabStyle="ttp__Requirement__c" mode="Edit" >
+        <apex:pagemessages />
+            <!--Edit Buttons will be displayed when the page shows the edit fields -->
+            <apex:pageBlockButtons id="requirementEditButtons">
+                <apex:commandButton id="Save" value="Save" action="{!Save}" />    
+                <apex:commandButton id="Cancel" value="Cancel" action="{!Cancel}" />            
+            </apex:pageBlockButtons>
+            
+            <!-- Requirement Detail section -->
+            <apex:pageblockSection title="Informations" >                            
+                 <apex:inputField value="{!ttp__Requirement__c.Name}" required="true"/>
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Class__c}" required="true"/>
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Description__c}" style="margin-top: 2px; margin-bottom: 2px; height: 60px; margin-left: 2px; margin-right: 2px; width: 250px"/>
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Requirement_Type__c}" required="true"/>                 
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Status__c}" required="true"/>
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Priority__c}"/>
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Version_Number__c}" rendered="false" />
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Enhancement__c}"/>                
+            <!--     <apex:inputField value="{!TT_Requirement__c.TT_Actual_Cycle__c}"/> -->
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Root_Requirement__c}" rendered="false"/>
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Direct_Cover_Status__c}" rendered="false"/>
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Project_Code__c}"/>
+       <!--          <apex:inputField value="{!TT_Requirement__c.TT_Make_New_Version__c}"/>  -->
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Review_Status__c}" rendered="false"/>
+              <!--   <apex:inputField value="{!Requirement__c.Tracebility__c}"/>   Temprorly commenting due to in sufficient time, this will be incorporated in the next patch update or next release -->
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Target_Release__c}" rendered="false"/>
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Parent_Requirement__c}"/>
+                 <apex:inputField value="{!ttp__Requirement__c.ttp__Target_Cycle__c}" required="true" />
+            </apex:pageblockSection>
+            
+            <!-- Clear Requirements section -->
+            <apex:pageblockSection Title="Clear Requirements" columns="1">
+                <apex:inputTextarea richText="true" value="{!ttp__Requirement__c.ttp__Clear_Requirement__c}"/>
+            
+            </apex:pageblockSection>
+            
+            
+            <!-- Clear Requirement input section -->
+            <apex:pageblockSection >
+                <!--  <apex:inputtextarea richText="True" value="{!ttp__Requirement__c.ttp__Clear_Requirement__c}"/> -->
+            </apex:pageblockSection>
+        </apex:pageBlock>        
+        </apex:form>                 
+</apex:page>

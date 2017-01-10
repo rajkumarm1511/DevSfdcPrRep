@@ -1,0 +1,23 @@
+<apex:page standardController="Phasing__c" recordSetVar="Phasings__c" tabStyle="Opportunity" sidebar="false">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!Phasings__c}" var="opp">
+            
+            <table border="0"> <tr>
+            <label for="Product Name">ProductName </label> <td><apex:column value="{!opp.Product_Name__c}"/> </td> </tr>
+            
+            </table>
+                <apex:column headerValue="Status">
+                    <apex:inputField value="{!opp.Status__c}"/>
+                </apex:column>
+                <apex:column headerValue="Week1">
+                    <apex:inputField value="{!opp.Week1__c}"/>
+                </apex:column>
+            </apex:pageBlockTable>      
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

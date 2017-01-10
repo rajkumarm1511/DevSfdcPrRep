@@ -1,0 +1,14 @@
+<apex:page standardController="Account" recordsetVar="accounts">
+<apex:form >
+    <apex:pageBlock title="All Accounts in the Organisation">
+        <apex:pageblockTable value="{!accounts}" var="a">
+            <apex:column value="{!a.Name}"/>
+            <apex:column value="{!a.AccountNumber}"/>
+            <apex:column value="{!a.Phone}"/>
+            <apex:column value="{!a.Site}"/>
+        </apex:pageblockTable>  
+    </apex:pageBlock>
+
+</apex:form>
+  
+</apex:page>

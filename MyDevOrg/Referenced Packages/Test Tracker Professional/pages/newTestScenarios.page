@@ -1,0 +1,54 @@
+<apex:page Controller="ttp.TTTestScenarioController">
+<apex:form >
+        <apex:pageBlock title="Add New Scenarios" mode="edit">
+        <apex:pageMessages ></apex:pageMessages>
+        
+            <apex:pageblockButtons >
+                <apex:commandButton value="Add New Scenario" action="{!addNewScenario}" rerender="listScenarios" status="listSection"/>  
+                <apex:commandButton value="Remove Empty Scenario" action="{!clearCells}" rerender="listScenarios"  status="listSection"/>   
+                <apex:commandButton value="Submit" action="{!save}"/>                
+                <apex:commandLink value="Cancel" action="{!cancel}"/>                                                        
+            </apex:pageblockButtons>
+            <apex:pageblockSection title="Test Group Objective" columns="1">
+                <font color="Blue"><b>{!currentGroup.ttp__Objective__c}</b></font>
+            </apex:pageblockSection>
+            <apex:pageBlockSection columns="1" >
+            <apex:actionStatus id="listSection">
+                <apex:facet name="stop">
+                    <apex:outputPanel id="listScenariosSection">
+                        <apex:pageBlockTable id="listScenarios" value="{!listTestScenarios}" var="Scenario" width="100%" >
+                            <apex:column headerValue="Objective" >
+                                <apex:inputTextarea value="{!Scenario.ttp__Objective__c}" cols="50"  rows="4"/>
+                            </apex:column>                             
+                            <apex:column headerValue="Detail" >
+                                <apex:inputTextarea value="{!Scenario.ttp__Description__c}" cols="50" rows="4"/>
+                            </apex:column>
+                            <apex:column headerValue="Requirement" >
+                                <apex:inputField value="{!Scenario.ttp__Requirement__c}"/> 
+                            </apex:column>                                                                          
+                            <apex:column headerValue="Configuration" >
+                                <apex:inputField value="{!Scenario.ttp__Configuration__c}"/> 
+                            </apex:column> 
+                            <apex:column headerValue="Allowed Run(s)" >
+                                <apex:inputField value="{!Scenario.ttp__Allowed_Runs__c}" /> 
+                            </apex:column>  
+                           
+                           <!-- Commented due to not need of Test Group in the multiple scenarios updation
+                             <apex:column headerValue="Test Group" >
+                                <apex:inputField value="{!Scenario.Test_Group__c}"/> 
+                            </apex:column>   
+                            
+                            -->
+                                                                                                                                                            
+                        </apex:pageBlockTable>
+                     </apex:outputPanel>
+                 </apex:facet>
+                 <apex:facet name="start">
+                     <apex:image url="{!URLFOR($Resource.ttp__TT_Images,'TTPageLoadImg.gif')}" width="25" height="25" alt="Opening" />     
+                 </apex:facet>    
+             </apex:actionStatus>                        
+            </apex:pageBlockSection>
+        
+        </apex:pageBlock>  
+    </apex:form>    
+</apex:page>

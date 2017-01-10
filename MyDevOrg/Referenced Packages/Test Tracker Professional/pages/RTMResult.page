@@ -1,0 +1,47 @@
+<apex:page cache="true" contentType="application/vnd.ms-excel#RTMResult.xls" standardController="ttp__Cycle__c" extensions="ttp.RTMController" sidebar="false">
+ 
+  
+  <apex:form >
+      <apex:pageblock >
+          <apex:pageblocksection columns="1" title="Detail" collapsible="false" >
+              <apex:pageblockSectionItem >
+                   <apex:outputLabel value="Cycle Name"/><apex:outputfield value="{!ttp__Cycle__c.Name}" />                                     
+              </apex:pageblockSectionItem>
+              <apex:pageblockSectionItem >
+                  <apex:outputLabel value="Cycle ID"/><apex:outputfield value="{!ttp__Cycle__c.ttp__Cycle_ID__c}" />
+              </apex:pageblockSectionItem>
+              <apex:pageblockSectionItem >
+                  <apex:outputLabel value="Start Date"/><apex:outputfield value="{!ttp__Cycle__c.ttp__Start_Date__c}" />
+              </apex:pageblockSectionItem>
+              <apex:pageblockSectionItem >
+                   <apex:outputLabel value="End Date"/><apex:outputfield value="{!ttp__Cycle__c.ttp__End_Date__c}" />    
+              </apex:pageblockSectionItem>
+          </apex:pageblocksection>
+
+          <apex:pageblocksection columns="1" title="Requirement Traceability" collapsible="false">
+              <apex:pageblockTable value="{!listRequirements}" var="Req">                             
+                  <apex:column headerValue="Requirement / Status">
+                      {!Req.ttp__Requirement_ID__c} /  <font color="Green"><b>{!Req.ttp__Status__c}</b></font><br/>
+                  </apex:column>
+                  
+                  <apex:column headerValue="Test Scenario(s) / Result">
+                      <apex:repeat value="{!Req.ttp__Test_Scenarios__r}" var="testScenario">
+                          {!testScenario.Name}/ <font color="Green"><b>{!testScenario.ttp__Result__c}</b></font><br/>                       
+                      </apex:repeat>
+                  </apex:column>
+                  <apex:column headerValue="Test Run(s) / Status" >                                   
+                        <apex:repeat value="{!requirementTestRunMap[Req.Id]}" var="testRun"> 
+                           {!testRun.Name} / <font color="Green"><b>{!testRun.ttp__Status__c}</b></font><br/>                              
+                        </apex:repeat>     
+                  </apex:column> 
+                  <apex:column headerValue="Defect(s) / Status">                 
+                      <apex:repeat value="{!Req.DefectRequirementLinks__r}" var="defectLink">
+                          {!defectLink.ttp__Parent_Defect__r.Name}/ <font color="Green"><b>{!defectLink.ttp__Parent_Defect__r.ttp__Status__c}</b></font><br/>                      
+                      </apex:repeat>
+                  </apex:column>
+                  
+              </apex:pageblockTable>       
+          </apex:pageblocksection>
+      </apex:pageblock>
+  </apex:form>        
+</apex:page>

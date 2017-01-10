@@ -1,0 +1,37 @@
+<apex:page title="Defect Link" standardController="ttp__Defect_Link__c" extensions="ttp.LinkDefectController" tabStyle="ttp__Defect__c" >
+    
+    <apex:form >
+        <apex:pageBlock >
+        <apex:pageMessages />
+             <apex:pageBlockSection title="Choose Entity" columns="1"  rendered="{!showEntityMatch}"> 
+                 <apex:inputField value="{!ttp__Defect_Link__c.ttp__Entity_Type__c}">   
+                 <apex:actionSupport event="onchange" rerender="fieldLookup" status="counterStatus" />
+                 </apex:inputField>
+             </apex:pageBlockSection>             
+             <apex:outputPanel id="fieldLookup" >
+               <apex:pageBlockSection title="Add Entity" columns="1"  rendered="{!showEntityMatch}">                   
+                   <apex:inputField value="{!ttp__Defect_Link__c.ttp__Requirement__c}" rendered="{!if(ttp__Defect_Link__c.ttp__Entity_Type__c=='Requirement',true,false)}"/> 
+                   <apex:inputField value="{!ttp__Defect_Link__c.ttp__Test_Group__c}" rendered="{!if(ttp__Defect_Link__c.ttp__Entity_Type__c=='Test Group',true,false)}"/>
+                   <apex:inputField value="{!ttp__Defect_Link__c.ttp__Test_Run__c}" rendered="{!if(ttp__Defect_Link__c.ttp__Entity_Type__c=='Test Run',true,false)}"/>
+                   <apex:inputField value="{!ttp__Defect_Link__c.ttp__Test_Scenario__c}" rendered="{!if(ttp__Defect_Link__c.ttp__Entity_Type__c=='Test Scenario',true,false)}"/>                                                                                            
+                   <apex:inputField value="{!ttp__Defect_Link__c.ttp__Child_Defect__c}" rendered="{!if(ttp__Defect_Link__c.ttp__Entity_Type__c=='Defect',true,false)}"/>                                                           
+                </apex:pageBlockSection>             
+             </apex:outputPanel>             
+          <apex:actionStatus id="counterStatus" startText="Opening...">
+                  <apex:facet name="start">                  
+                      <apex:image url="{!URLFOR($Resource.ttp__TT_Images,'TTPageLoadImg.gif')}" width="25" height="25" alt="Opening" />
+                  </apex:facet>  
+         </apex:actionStatus>               
+        <apex:pageBlockSection title="Add Defect" columns="1" rendered="{!showDefectMatch}" > 
+           <apex:inputField value="{!ttp__Defect_Link__c.ttp__Parent_Defect__c}"/> 
+        </apex:pageBlockSection>             
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Cancel"  action="{!cancel}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+
+    
+    
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page >
+    
+        <apex:chart data="{Registrations__c}" height="300" width="700" theme="Sky">
+            <apex:pieSeries labelField="Gender" dataField="data1">
+            
+            </apex:pieSeries>
+        </apex:chart>
+    
+</apex:page>

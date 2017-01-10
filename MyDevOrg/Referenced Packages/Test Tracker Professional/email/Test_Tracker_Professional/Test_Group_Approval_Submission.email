@@ -1,0 +1,8 @@
+Dear {!Test_Group__c.Approver__c},
+   Following Test Group has been submitted for your approval. Please take the necessary action.
+
+Use the below link to access the test group.
+{!Test_Group__c.Link}
+
+Regards.
+Test Tracker.

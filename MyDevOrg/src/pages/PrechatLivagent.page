@@ -1,0 +1,58 @@
+<!-- ***************************************************************************************** 
+ * Developed by :Rajkumar 
+ * Created on   : 26/2/2014
+ * Modified on  : 10/06/2014
+ * Description  : This VF Page will search for existing contacts when the request comes from customer and creates new case for each chat requests.          
+******************************************************************************************* -->
+
+<apex:page showHeader="false">
+<!-- This script takes the endpoint URL parameter passed from the deployment page and makes it the action for the form -->
+<script type="text/javascript">
+(function() {
+function handlePageLoad() {
+var endpointMatcher = new RegExp("[\\?\\&]endpoint=([^&#]*)");
+document.getElementById('prechatForm').setAttribute('action',
+decodeURIComponent(endpointMatcher.exec(document.location.search)[1]));
+} if (window.addEventListener) {
+window.addEventListener('load', handlePageLoad, false);
+} else { window.attachEvent('onload', handlePageLoad, false);
+}})();
+</script>
+
+<center><h2 style="color: #0000FF; font:italic bold 15px/40px Georgia, serif; "> Welcome to ProQuest Support System </h2></center>
+<h1>Please fill the details below to start chat:Pre-chat Form</h1>
+<form method='post' id='prechatForm'>
+    First Name: <input type='text' name='liveagent.prechat:contactFirstName' required='required' id='firstName'/><br />
+    Last Name: <input type='text' name='liveagent.prechat:contactLastName' required='required' id='lastname'/><br />
+    Email Address: <input type='text' name='liveagent.prechat:contactEmail' required='required' id='email'/><br />
+    Phone Number: <input type='text' name='liveagent.prechat:PhoneNumber' id='phone'/><br />
+    Company: <input type='text' name='liveagent.prechat:Company' /><br />
+    Country: <input type="text" name="liveagent.prechat:Country" /><br />
+    State/Province: <input type="text" name="liveagent.prechat:State/Province" /><br />
+    Brief Description: <input type="text" name="liveagent.prechat:caseSubject" /><br />
+    CaseNumber: <input type="text" name="liveagent.prechat:CCaseNumber" /> <br/>
+
+<!-- Map the detail inputs to the Contact fields --> 
+    <input type="hidden" name="liveagent.prechat.findorcreate.map:Contact" value="Email,contactEmail;" />
+    <input type="hidden" name="liveagent.prechat.findorcreate.map.doFind:Contact" value="Email,true;" />
+    <input type="hidden" name="liveagent.prechat.findorcreate.map.isExactMatch:Contact" value="Email,true;" />
+    <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Contact" value="Contact" />
+    <input type="hidden" name="liveagent.prechat.findorcreate.showOnCreate:Contact" value="true" />
+
+<!-- Create a Case  -->
+    <input type="hidden" name="liveagent.prechat:caseOrigin" value="Chat" />
+    <input type="hidden" name="liveagent.prechat.findorcreate.map:Case" value="Origin,caseOrigin;CaseNumber,CCaseNumber;" />
+    <input type="hidden" name="liveagent.prechat.findorcreate.map.doFind:Case" value="CaseNumber,true;" />
+    <input type="hidden" name="liveagent.prechat.findorcreate.map.isExactMatch:Case" value="CaseNumber,true;" />
+    <input type="hidden" name="liveagent.prechat.findorcreate.map.doCreate:Case" value="Origin,true;CaseNumber,true;" />
+    <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Case" value="Case" />
+    <input type="hidden" name="liveagent.prechat.findorcreate.showOnCreate:Case" value="true" /> 
+
+<!-- Link the Contact to the Case -->
+    <input type= "hidden" name="liveagent.prechat.findorcreate.linkToEntity:Contact" value="Case,ContactId" />
+
+<!-- Submit button -->
+    <input type='submit' value='Request Chat' id='prechat_submit' style="background:yellow;"/>
+
+</form>
+</apex:page>

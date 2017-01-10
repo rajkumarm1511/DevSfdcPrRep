@@ -1,0 +1,19 @@
+<apex:page standardStylesheets="false" sidebar="false">
+
+ <link rel="icon" type="image/png" href="{!URLFOR($Resource.ChatImage)}"/>
+
+<script type='text/javascript' src='https://c.la2c1.salesforceliveagent.com/content/g/js/29.0/deployment.js'></script>
+<script type='text/javascript'>
+liveagent.init('https://d.la2c1.salesforceliveagent.com/chat', '57240000000Cbe5', '00D300000000XOy');
+</script>
+
+<img id="liveagent_button_online_573i0000000RrgQ" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('573i0000000RrgQ')" src="https://proquestchat-developer-edition.na15.force.com/proquestchat/resource/1402485790000/ChatImage" /><img id="liveagent_button_offline_573i0000000RrgQ" style="display: none; border: 0px none; " src="https://proquestchat-developer-edition.na15.force.com/proquestchat/resource/1402485790000/ChatImage" />
+<script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('573i0000000RrgQ', document.getElementById('liveagent_button_online_573i0000000RrgQ'));
+liveagent.showWhenOffline('573i0000000RrgQ', document.getElementById('liveagent_button_offline_573i0000000RrgQ'));
+});</script>
+
+
+
+</apex:page>

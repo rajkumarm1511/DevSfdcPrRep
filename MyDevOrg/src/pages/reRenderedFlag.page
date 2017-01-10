@@ -1,0 +1,15 @@
+<apex:page controller="reRenderControler" showHeader="true" sidebar="true">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:commandButton value="Show All Accounts" action="{!reRenderBlock}" reRender="pgbkid"/>             
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="pgbkid">
+            <apex:outputText value="{!OutputString}">            
+            </apex:outputText>
+        
+        </apex:pageBlock>
+    
+    </apex:form>
+ 
+</apex:page>

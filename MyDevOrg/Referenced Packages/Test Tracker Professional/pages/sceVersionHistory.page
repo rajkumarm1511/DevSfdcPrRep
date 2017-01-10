@@ -1,0 +1,105 @@
+<apex:page controller="ttp.TTSceVersionController" action="{!retriveOldScenarios}"  >
+    
+    <apex:sectionHeader title="Test Scenario Version History"  />
+    <apex:form >
+        <apex:pageBlock > 
+            <apex:pageBlockButtons location="top" id="versionButtons" >
+                <apex:actionStatus id="hideButtons">
+                    <apex:facet name="stop">
+                      <apex:outputPanel >
+                      <apex:commandButton value="Activate" action="{!activateSelected}"/>
+                      <apex:commandButton value="Campare" action="{!showComparion}" status="comparisionStatus" rerender="comparisionStatus"/>
+                      <!-- <apex:commandButton value="Delete" action="{!deleteSelected}" rerender="listSceVersions,comparisionStatus"/> -->
+                      <apex:commandButton value="Back to Scenario"  action="{!backToScenario}"/>
+                      </apex:outputPanel>
+                    </apex:facet>
+                    <apex:facet name="start">
+                        <apex:image url="{!URLFOR($Resource.ttp__TT_Images,'TTPageLoadImg.gif')}" width="25" height="25" alt="Opening" />                        
+                    </apex:facet>  
+                  
+                </apex:actionStatus>  
+                 
+            </apex:pageBlockButtons>    
+           <apex:pageMessages />
+                <apex:outputPanel id="listSceVersions" >
+                    <apex:pageBlockSection columns="1" >
+                       <apex:pageBlockTable value="{!listScenariosWrp}" var="sceW">
+                           <apex:column >            
+                                <apex:inputCheckbox Value="{!sceW.isChecked}"> 
+                                    <apex:actionSupport event="onclick" action="{!uncheckPrimaryCheckbox}" rerender="listSceVersions" status="hideButtons"/>
+                                </apex:inputCheckbox>
+                            </apex:column>
+                            
+                            <apex:column value="{!sceW.sceVersion.Name}" />
+                            <apex:column value="{!sceW.sceVersion.ttp__Configuration__c}" />
+                            <apex:column value="{!sceW.sceVersion.ttp__Description__c}" />
+                            <apex:column value="{!sceW.sceVersion.ttp__Objective__c}" />
+                            <apex:column value="{!sceW.sceVersion.ttp__Test_Group__c}" />
+                            <apex:column value="{!sceW.sceVersion.ttp__Requirement__c}" />                            
+                            <apex:column value="{!sceW.sceVersion.ttp__Version_Number__c}" />                                                                                 
+                        </apex:pageBlockTable> 
+                      
+                    </apex:pageBlockSection>                                    
+                </apex:outputPanel>  
+                
+                
+                
+                <!-- Requirement Comparision Section -->
+                
+                <apex:actionStatus id="comparisionStatus">
+                    <apex:facet name="stop">
+                          <apex:outputPanel id="comparisionSection"  rendered="{!showCompareSection}">     
+                            <apex:pageBlockSection title="Campare Versions">
+                                <apex:pageBlockSectionItem >            
+                                <!-- Empty section item to make the space -->    
+                                 
+                                </apex:pageBlockSectionItem>  
+                                  <apex:pageBlockSectionItem >
+                                <!-- Empty section item to make the space -->
+                                </apex:pageBlockSectionItem>  
+                                <apex:outputLabel ><b><font size="2" color="green">Active Scenario Details</font></b></apex:outputLabel>
+                                <apex:outputLabel ><b><font size="2" color="blue">Selected Scenario Details</font></b></apex:outputlabel>     
+                              
+                                            
+                                <apex:outputField value="{!activeScenario.Name}"/>
+                                <apex:outputField value="{!checkedInstance.sceVersion.Name}"/>
+                                
+                                <apex:outputField value="{!activeScenario.ttp__Description__c}"/>
+                                <apex:outputField value="{!checkedInstance.sceVersion.ttp__Description__c}"/>
+                                
+                                <apex:outputField value="{!activeScenario.ttp__Configuration__c}"/>
+                                <apex:outputField value="{!checkedInstance.sceVersion.ttp__Configuration__c}"/>
+                                
+                                <apex:outputField value="{!activeScenario.ttp__Objective__c}"/>
+                                <apex:outputField value="{!checkedInstance.sceVersion.ttp__Objective__c}" label="Scenario Title"/>
+                                
+                                <apex:outputField value="{!activeScenario.ttp__Project_Code__c}"/>
+                                <apex:outputField value="{!checkedInstance.sceVersion.ttp__Project_Code__c}"/>
+                                
+                                <apex:outputField value="{!activeScenario.ttp__Requirement__c}"/>
+                                <apex:outputField value="{!checkedInstance.sceVersion.ttp__Requirement__c}"/>
+                                
+                                <apex:outputField value="{!activeScenario.ttp__Allowed_Runs__c}"/>
+                                <apex:outputField value="{!checkedInstance.sceVersion.ttp__Allowed_Runs__c}"/>                                
+                                
+                                <apex:outputField value="{!activeScenario.ttp__Result__c}"/>
+                                <apex:outputField value="{!checkedInstance.sceVersion.ttp__Result__c}"/>
+                                
+                                <apex:outputField value="{!activeScenario.ttp__Test_Group__c}"/>
+                                <apex:outputField value="{!checkedInstance.sceVersion.ttp__Test_Group__c}"/>   
+                                
+                                <apex:outputField value="{!activeScenario.ttp__Version_Number__c}"/>
+                                <apex:outputField value="{!checkedInstance.sceVersion.ttp__Version_Number__c}"/>                                                                
+                                
+                                
+                            </apex:pageBlockSection>
+                         </apex:outputPanel>
+                    </apex:facet>
+                    <apex:facet name="start">
+                        <apex:image url="{!URLFOR($Resource.ttp__TT_Images,'TTPageLoadImg.gif')}" width="25" height="25" alt="Opening" />    
+                    </apex:facet>
+                </apex:actionStatus>              
+         </apex:pageBlock>
+  
+    </apex:form>       
+</apex:page>

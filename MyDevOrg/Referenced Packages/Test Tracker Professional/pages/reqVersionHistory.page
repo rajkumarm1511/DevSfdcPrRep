@@ -1,0 +1,120 @@
+<apex:page controller="ttp.TTReqVersionController" action="{!retriveOldRequirements}"  >
+    <apex:form >
+        <apex:pageBlock title="Version History"  > 
+            <apex:pageBlockButtons location="top" id="versionButtons" >
+                <apex:actionStatus id="hideButtons">
+                    <apex:facet name="stop">
+                      <apex:outputPanel >
+                      <apex:commandButton value="Activate" action="{!activateSelected}"/>
+                      <apex:commandButton value="Campare" action="{!showComparion}" status="comparisionStatus" rerender="comparisionStatus"/>
+                     <!-- <apex:commandButton value="Delete" action="{!deleteSelected}" rerender="listReqVersions,comparisionStatus"/> -->
+                      <apex:commandButton value="Back to Requirement" action="{!backToRequirement}"/>
+                      </apex:outputPanel>
+                    </apex:facet>
+                    <apex:facet name="start">
+                        <apex:image url="{!URLFOR($Resource.ttp__TT_Images,'TTPageLoadImg.gif')}" width="25" height="25" alt="Opening" />                        
+                    </apex:facet>  
+                  
+                </apex:actionStatus>  
+                 
+            </apex:pageBlockButtons>    
+           <apex:pageMessages />
+                <apex:outputPanel id="listReqVersions" >
+                    <apex:pageBlockSection columns="1" >
+                       <apex:pageBlockTable value="{!listRequirementsWrp}" var="reqV">
+                           <apex:column >            
+                                <apex:inputCheckbox Value="{!reqV.isChecked}"> 
+                                    <apex:actionSupport event="onclick" action="{!uncheckPrimaryCheckbox}" rerender="listReqVersions" status="hideButtons"/>
+                                </apex:inputCheckbox>
+                            </apex:column>
+                            
+                            <apex:column value="{!reqV.reqVersion.Name}" />
+                            <apex:column value="{!reqV.reqVersion.ttp__Direct_Cover_Status__c}" />
+                            <apex:column value="{!reqV.reqVersion.ttp__Enhancement__c}" />
+                            <apex:column value="{!reqV.reqVersion.ttp__Is_Child__c}" />
+                            <apex:column value="{!reqV.reqVersion.ttp__Priority__c}" />
+                            <apex:column value="{!reqV.reqVersion.ttp__Requirement_Type__c}" />
+                            <apex:column value="{!reqV.reqVersion.ttp__Review_Status__c}" />
+                            <apex:column value="{!reqV.reqVersion.ttp__Version_Number__c}" />                                                                                 
+                        </apex:pageBlockTable> 
+                      
+                    </apex:pageBlockSection>                                    
+                </apex:outputPanel>  
+                
+                
+                
+                <!-- Requirement Comparision Section -->
+                
+                <apex:actionStatus id="comparisionStatus">
+                    <apex:facet name="stop">
+                          <apex:outputPanel id="comparisionSection"  rendered="{!showCompareSection}">     
+                            <apex:pageBlockSection title="Campare Versions">
+                                <apex:pageBlockSectionItem >            
+                                <!-- Empty section item to make the space -->    
+                                 
+                                </apex:pageBlockSectionItem>  
+                                  <apex:pageBlockSectionItem >
+                                <!-- Empty section item to make the space -->
+                                </apex:pageBlockSectionItem>  
+                                <apex:outputLabel ><b><font size="2" color="green">Active Requirement Details</font></b></apex:outputLabel>
+                                <apex:outputLabel ><b><font size="2" color="blue">Selected Requirement Details</font></b></apex:outputlabel>     
+                              
+                                            
+                                <apex:outputField value="{!activeRequirement.Name}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.Name}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Description__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Description__c}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Status__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Status__c}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Class__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Class__c}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Enhancement__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Enhancement__c}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Is_Child__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Is_Child__c}"/>
+
+                                <apex:outputField value="{!activeRequirement.ttp__Reviewer__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Reviewer__c}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Parent_Requirement__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Parent_Requirement__c}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Priority__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Priority__c}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Project_Code__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Project_Code__c}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Requirement_Type__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Requirement_Type__c}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Review_Status__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Review_Status__c}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Target_Cycle__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Target_Cycle__c}"/>
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Target_Release__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Target_Release__c}"/>
+                               
+                                
+                                <apex:outputField value="{!activeRequirement.ttp__Version_Number__c}"/>
+                                <apex:outputField value="{!checkedInstance.reqVersion.ttp__Version_Number__c}"/>
+                                
+                                
+                            </apex:pageBlockSection>
+                         </apex:outputPanel>
+                    </apex:facet>
+                    <apex:facet name="start">
+                        <apex:image url="{!URLFOR($Resource.ttp__TT_Images,'TTPageLoadImg.gif')}" width="25" height="25" alt="Opening" />    
+                    </apex:facet>
+                </apex:actionStatus>              
+         </apex:pageBlock>
+  
+    </apex:form>       
+</apex:page>

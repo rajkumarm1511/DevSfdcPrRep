@@ -1,0 +1,112 @@
+<apex:page showHeader="false"  controller="PreChatController1"> 
+<!-- This script takes the endpoint URL parameter passed from the deployment page and makes it the action for the form -->
+
+<head>
+<script type="text/javascript">
+(function() {
+function handlePageLoad() {
+var endpointMatcher = new RegExp("[\\?\\&]endpoint=([^&#]*)");
+document.getElementById('prechatForm').setAttribute('action',decodeURIComponent(endpointMatcher.exec(document.location.search)[1]));
+} if (window.addEventListener) {
+window.addEventListener('load', handlePageLoad, false);
+} else { window.attachEvent('onload', handlePageLoad, false);
+}})();
+
+function getCaseOrContact()
+    {
+        console.log('Getting Case or contact');
+        var emailAddr = document.getElementById('email').value.trim();
+        var fname = document.getElementById('fname').value.trim();
+        var lname = document.getElemenntByID('lname').value.trim();
+        var caseNumber= document.getElementById('caseNumber').value.trim();
+        //var subj= document.getElementById('sub').value.trim();
+        
+        alert('emailAddr ======='+emailAddr +'==========='+fname+'*********'+caseNumber);
+        try
+        {
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.PreChatController1.findLeadOrContactByEmail}', 
+                fname,
+                emailAddr,
+                caseNumber,
+                function(result, event)
+                {
+                    alert('event.status============='+event.status);
+                    if (event.status) 
+                    {
+                        console.log(result);
+                       /* if(result.Id.substring(0,3) === '003')
+                        {
+                            document.getElementById('contactid').value = result.Id;
+                        }
+                        else if(result.Id.substring(0,3) === '500')
+                        {
+                            document.getElementById('caseid').value = result.Id;
+                        }*/
+                        document.forms["prechatForm"].submit();
+
+
+                        return true;
+                    } 
+                }, 
+                {escape: false}
+            );
+        }
+        catch(ex)
+        {
+            alert(ex.message);
+            console.log(ex);
+            return false;
+        }
+        return false;
+    }   
+
+</script>
+</head>
+
+<h1>Pre-chat Form</h1>
+<form method='post' id='prechatForm'>
+
+First Name: <input type="text" name="liveagent.prechat:contactFirstName" id='fname' /><br />
+Last Name: <input type="text" name="liveagent.prechat:contactLastName" id='lname' /><br />
+Email Address: <input type="text" name="liveagent.prechat:contactEmail" id='email' /><br />
+Phone Number: <input type='text' name='liveagent.prechat:PhoneNumber' /><br />
+Company: <input type='text' name='liveagent.prechat:Company' /><br />
+
+Country: <input type='text' name='liveagent.prechat:Country' /><br />
+State/Province: <input type='text' name='liveagent.prechat:State/Province' /><br />
+Brief Description: <input type='text' name='liveagent.prechat:caseSubject' /><br />
+CaseNumber: <input type='text' name='liveagent.prechat:CCaseNumber' id='caseNumber' /> <br/>
+
+<!-- Map the detail inputs to the Contact fields --> 
+<input type="hidden" name="liveagent.prechat.findorcreate.map:Contact" value="Email,contactEmail;" />
+<input type="hidden" name="liveagent.prechat.findorcreate.map.doFind:Contact" value="Email,true;" />
+<input type="hidden" name="liveagent.prechat.findorcreate.map.isExactMatch:Contact" value="Email,true;" />
+<input type="hidden" name="liveagent.prechat.findorcreate.map.doCreate:Contact" value="Email,true;" />
+<input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Contact" value="Contact" />
+<input type="hidden" name="liveagent.prechat.findorcreate.showOnCreate:Contact" value="true" />
+
+<!-- Create a Case  -->
+<input type="hidden" name="liveagent.prechat:caseOrigin" value="Chat" />
+<input type="hidden" name="liveagent.prechat.findorcreate.map:Case" value="Origin,caseOrigin;CaseNumber,CCaseNumber;" />
+<input type="hidden" name="liveagent.prechat.findorcreate.map.doFind:Case" value="CaseNumber,true;" />
+<input type="hidden" name="liveagent.prechat.findorcreate.map.isExactMatch:Case" value="CaseNumber,true;" />
+<input type="hidden" name="liveagent.prechat.findorcreate.map.doCreate:Case" value="Origin,true;CaseNumber,true;" />
+<input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Case" value="Case" />
+<input type="hidden" name="liveagent.prechat.findorcreate.showOnCreate:Case" value="true" />
+
+
+<!-- Link the Contact to the Case -->
+<input type= "hidden" name="liveagent.prechat.findorcreate.linkToEntity:Contact" value="Case,ContactId" />
+
+
+<!-- Submit button -->
+
+<input type='submit' value='Request Chat' onclick='getCaseOrContact()' id='prechat_submit'/>
+
+<style type="text/css">
+p {font-weight: bolder }
+</style>
+
+</form>
+</apex:page>

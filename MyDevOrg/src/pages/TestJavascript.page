@@ -1,0 +1,10 @@
+<apex:page controller="Custom" showHeader="true" sidebar="true" >
+<apex:form >
+
+<apex:inputCheckbox value="{!chkbox}"/>
+<apex:inputText value="{!accName}"/>
+<apex:inputText value="{!accAddress}"/>
+<apex:commandButton value="Go" action="{!Go}"/>
+
+</apex:form>
+</apex:page>

@@ -1,0 +1,7 @@
+<aura:component >
+    
+    <c:helloHeading /> <br />
+    
+    <p>Hello Lightning Salesforce Application,First SLA</p>
+	
+</aura:component>

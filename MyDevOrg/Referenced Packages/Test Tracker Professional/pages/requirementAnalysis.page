@@ -1,0 +1,88 @@
+<apex:page standardController="ttp__Requirement__c" sidebar="false" extensions="ttp.TTRequirementAnalysisController" action="{!readGraphData}">
+
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<apex:outputPanel >
+        <table class="detailList" cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tr><td width="50%">    
+                <div id="chart_div1.0"></div> 
+            </td><td width="50%">                   
+                <div id="chart_div1.1"></div> 
+            </td><td width="50%">
+                <div id="chart_div1.2"></div> 
+            </td>               
+            </tr> 
+        </table>
+ 
+        <script type="text/javascript">
+          google.load("visualization", "1", {packages:["corechart"]});
+          google.setOnLoadCallback(drawChart);                    
+          function drawChart() {
+            // Requirements Attached with Scenarios
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Test Scenario Result');
+            data.addColumn('number', 'No. Of Scenarios');
+
+            //Adding dynamic display. 
+            var testScenarioByStatusArray=[<apex:outputText value="{!testScenarioByStatusString}" />];
+            data.addRows(testScenarioByStatusArray.length);                
+            var testScenarioStatusData;
+            var i=0;
+            var temp=0;                
+            for(i=1; i<testScenarioByStatusArray.length; i++)
+            {
+                testScenarioStatusData=testScenarioByStatusArray[i].split(":");
+                temp=i-1;
+                data.setValue(parseInt(temp), 0, testScenarioStatusData[0]);
+                data.setValue(parseInt(temp), 1, parseInt(testScenarioStatusData[1]));
+            }                        
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1.0'));
+            chart.draw(data, {width: 350, height: 200, title: 'Requirement Coverage By Test Scenarios', colors:['#FFA500'],chartArea:{left:40,top:40}});
+          
+          
+          // Requirements Attached with Scenarios and the Run status with each Scenarios
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Test Run Status');
+            data.addColumn('number', 'No. Of Test Runs');
+            //Adding dynamic display. 
+            var testRunByStatusArray=[<apex:outputText value="{!testRunByStatusString}" />];
+            data.addRows(testRunByStatusArray.length);                
+            var testRunStatusData;
+            var i=0;
+            var temp=0;                
+            for(i=1; i<testRunByStatusArray.length; i++)
+            {
+                testRunStatusData=testRunByStatusArray[i].split(":");
+                temp=i-1;
+                data.setValue(parseInt(temp), 0, testRunStatusData[0]);
+                data.setValue(parseInt(temp), 1, parseInt(testRunStatusData[1]));
+            } 
+              
+    
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1.1'));
+            chart.draw(data, {width: 350, height: 200, title: 'Requirement Coverage By Test Runs', colors:['#008000'],chartArea:{left:40,top:40}});
+            
+            // Requirements Attached with Defects and the status with each Defect
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Defect Status');
+            data.addColumn('number', 'No. Of Defects');
+            //Adding dynamic display. 
+            var defectByStatusArray=[<apex:outputText value="{!defectByStatusString}" />];
+            data.addRows(defectByStatusArray.length);                
+            var defectStatusData;
+            var i=0;
+            var temp=0;                
+            for(i=1; i<defectByStatusArray.length; i++)
+            {
+                defectStatusData=defectByStatusArray[i].split(":");
+                temp=i-1;
+                data.setValue(parseInt(temp), 0, defectStatusData[0]);
+                data.setValue(parseInt(temp), 1, parseInt(defectStatusData[1]));
+            }  
+    
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1.2'));
+            chart.draw(data, {width: 350, height: 200, title: 'Requirement Coverage By Defects', colors:['#800000'],chartArea:{left:40,top:40}});
+          
+          }
+        </script>
+</apex:outputPanel>
+</apex:page>

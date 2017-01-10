@@ -1,0 +1,30 @@
+<apex:page standardController="Phasing__c" recordSetVar="Phasings__c" tabStyle="Opportunity" sidebar="false" >
+<apex:form > 
+<apex:pageBlock title="RecordEdit">
+
+<apex:pageBlockButtons >
+     <apex:commandButton value="Save" action="{!save}" onclick="prompt('Enter any value to continue')"/>
+</apex:pageBlockButtons>
+
+<apex:pageBlockSection columns="6" > 
+ 
+<apex:repeat value="{!Phasings__c}" var="c"  >
+
+
+  <apex:facet name="header"></apex:facet>
+   <apex:inputField value="{!c.Product_Name__c}"/><br />
+  <apex:outputField value="{!c.Type__c}"/><br />
+  <apex:inputField value="{!c.TRU__c}"/><br />
+  <apex:inputField value="{!c.Status__c}"/><br />
+   <apex:inputField value="{!c.Quarter__c}"/><br />
+   <apex:inputField value="{!c.Week1__c}"/><br />
+   <apex:inputField value="{!c.Week2__c}"/><br />
+   <apex:inputField value="{!c.Week3__c}"/><br />
+
+    <br />
+
+</apex:repeat>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form> 
+</apex:page>

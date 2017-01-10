@@ -1,0 +1,8 @@
+Dear {!Test_Group__c.OwnerFullName},
+The following Test Group has been rejected by your Approver.
+
+Please use the below link to access the record.
+{!Test_Group__c.Link}.
+
+Regards,
+Test Tracker.

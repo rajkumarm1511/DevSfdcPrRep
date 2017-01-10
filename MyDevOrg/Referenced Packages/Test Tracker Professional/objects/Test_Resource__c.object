@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>This object is to track the resource information who works in the project</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Project_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Project Code</label>
+        <length>8</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Resource_Details__c</fullName>
+        <deprecated>false</deprecated>
+        <description>More Details about the resource like email ids or links</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Complete Details</inlineHelpText>
+        <label>Resource Details</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>15</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Resource_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <displayFormat>R-{00000}</displayFormat>
+        <externalId>false</externalId>
+        <label>Resource ID</label>
+        <trackTrending>false</trackTrending>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Test_Group_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This test group Id is used to associate this test scenario with the corresponding test group. This has been done by the trigger at the backend</description>
+        <externalId>false</externalId>
+        <formula>IF( NOT(ISBLANK(Test_Scenario__c )), Test_Scenario__r.Test_Group__c, Test_Group__c  )</formula>
+        <inlineHelpText>To be incorparated</inlineHelpText>
+        <label>Test Group Id</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Test_Group__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Test Group</label>
+        <referenceTo>Test_Group__c</referenceTo>
+        <relationshipLabel>Test Resources</relationshipLabel>
+        <relationshipName>Test_Resources</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Test_Scenario__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Test Scenario</label>
+        <referenceTo>Test_Scenario__c</referenceTo>
+        <relationshipLabel>Test Resources</relationshipLabel>
+        <relationshipName>Resources</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Test Resource</label>
+    <nameField>
+        <label>Description</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Test Resources</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Resource_ID__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <sharingReasons>
+        <fullName>TTProjectGroup__c</fullName>
+        <label>TTProjectGroup</label>
+    </sharingReasons>
+    <validationRules>
+        <fullName>Resource_Association</fullName>
+        <active>true</active>
+        <description>Test resource must be associated with either Test Group or Test Scenario</description>
+        <errorConditionFormula>AND(ISBLANK(  Test_Group__c  ),ISBLANK( Test_Scenario__c ))</errorConditionFormula>
+        <errorMessage>Test resource must be associated with either Test Group or Test Scenario</errorMessage>
+    </validationRules>
+</CustomObject>

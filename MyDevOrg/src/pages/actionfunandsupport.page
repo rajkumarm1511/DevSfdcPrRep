@@ -1,0 +1,23 @@
+<apex:page controller="ApexSupFuncontroller">
+    <apex:form >
+    <h1>Demonstration for AJAX Action Support and Function </h1><br></br><br></br>
+       <b> Input Text  :  <apex:inputText label="rrrrr">    
+        <apex:actionSupport event="onclick" action="{!actionsupmethod}" rerender="outptText"/>       
+        </apex:inputText> <br></br>
+        
+        <apex:actionFunction name="myactionfun"  action="{!actionFunMethod}" reRender="outptText"/><br></br> 
+        
+        Click me to call action function method   <apex:inputcheckbox onclick="myJavaMethod()" /><br></br>   
+        <script>
+           function myJavaMethod(){
+           var checkinput = confirm('Are sure you wnat to call action function method?');
+           if(checkinput == true) 
+           myactionfun();
+           }
+       </script>
+        <br></br><br></br> </b>
+     <apex:pageBlock >
+        <apex:outputText value="{!Display_This_String}" id="outptText"/>
+    </apex:pageBlock>                
+    </apex:form> 
+</apex:page>

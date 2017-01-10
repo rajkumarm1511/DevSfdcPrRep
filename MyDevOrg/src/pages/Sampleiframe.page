@@ -1,0 +1,11 @@
+<apex:page >
+    <apex:form >
+        <apex:pageBlock title="Sample Iframe">
+            <apex:pageblocksection >
+            
+            </apex:pageblocksection>        
+       </apex:pageBlock>
+            <apex:iframe src="www.salesforce.com" scrolling="true" id="dummy" />
+        
+    </apex:form>  
+</apex:page>

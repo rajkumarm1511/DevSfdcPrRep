@@ -1,0 +1,8 @@
+Dear {!Enhancement__c.OwnerFullName},
+The following enhancement has been submitted for your approval. Please take the necessary action.
+Use the below link to access the record.
+
+{!Enhancement__c.Link}
+
+Regards,
+Test Tracker

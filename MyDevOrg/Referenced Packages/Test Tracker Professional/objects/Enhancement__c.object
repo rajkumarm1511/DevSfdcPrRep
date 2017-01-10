@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>The defect may not be fixed in the particular release. so this may need new enhancement which will be developed in the next release or next cycle.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Approvar_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Project Manager is the approvar for the new Enhancement created</description>
+        <externalId>false</externalId>
+        <formula>Target_Release__r.Project__r.Project_Manager__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approvar ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Who supposed to approve the enhancement created</inlineHelpText>
+        <label>Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Enhancements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Defect__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Enhancement Associated with the defect</description>
+        <externalId>false</externalId>
+        <label>Defect</label>
+        <referenceTo>Defect__c</referenceTo>
+        <relationshipLabel>Enhancements</relationshipLabel>
+        <relationshipName>Enhancements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Enhancement_Detail__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Brief introduction about the new enhancement.</description>
+        <externalId>false</externalId>
+        <label>Detail</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>20</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Project_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Project code is to implement the project security</description>
+        <externalId>false</externalId>
+        <formula>Defect__r.Project_Code__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Project Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Current status of the enhancement created</inlineHelpText>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>New</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Target_Release__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Enhancement will be developed in this release</description>
+        <externalId>false</externalId>
+        <inlineHelpText>On which project release this enhancement is going to be developed. this will have multiple requirements to develop in some other release.</inlineHelpText>
+        <label>Target Release</label>
+        <referenceTo>Release__c</referenceTo>
+        <relationshipLabel>Enhancements</relationshipLabel>
+        <relationshipName>Enhancements</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Enhancement</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Defect__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Title</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Enhancements</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Defect__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Target_Release__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <sharingReasons>
+        <fullName>TTProjectGroup__c</fullName>
+        <label>TTProjectGroup</label>
+    </sharingReasons>
+    <validationRules>
+        <fullName>Avoid_Multiple_Enhancement</fullName>
+        <active>true</active>
+        <description>If the associated defect already has an enhancement. this should not allow to create another enhancement</description>
+        <errorConditionFormula>IF(ISNEW(),Defect__r.Enhancement_Created__c,false)</errorConditionFormula>
+        <errorMessage>Enhancement Already created for this defect!.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Defect_Status_to_Creat_Enhancement</fullName>
+        <active>true</active>
+        <description>Defect status should be in &apos;Enhancement Needed&apos; Status to create new enhancements</description>
+        <errorConditionFormula>NOT((TEXT( Defect__r.Status__c)= &apos;Enhancement Needed&apos;))</errorConditionFormula>
+        <errorMessage>Defect Status is not valid to create new Enhancement</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Enhancement_Reassignment</fullName>
+        <active>true</active>
+        <description>Enhancement Should not be reassigned to other defects</description>
+        <errorConditionFormula>ISCHANGED( Defect__c )</errorConditionFormula>
+        <errorMessage>Enhancement cannot be reassigned!</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Target_Release_Project_Code</fullName>
+        <active>true</active>
+        <description>Target release must be in the same project.</description>
+        <errorConditionFormula>IF(NOT( Project_Code__c == Target_Release__r.Project_Code__c ),true,false)</errorConditionFormula>
+        <errorMessage>Target Release must be in the same project</errorMessage>
+    </validationRules>
+</CustomObject>

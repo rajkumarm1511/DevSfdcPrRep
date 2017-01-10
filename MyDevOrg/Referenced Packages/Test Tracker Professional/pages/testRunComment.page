@@ -1,0 +1,17 @@
+<apex:page title="Test Run Comment" standardController="ttp__Test_Run_Comment__c" extensions="ttp.TestRunCommentController">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageBlockSection title="Add Comment" columns="1">                                        
+                   <apex:inputTextarea value="{!ttp__Test_Run_Comment__c.ttp__Comment__c}" style="margin-top: 2px; margin-bottom: 2px; height: 100px; margin-left: 2px; margin-right: 2px; width: 300px" required="true"/>   
+                   <apex:inputField value="{!ttp__Test_Run_Comment__c.ttp__Test_Run__c}" rendered="false"/>          
+                         
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form> 
+   
+</apex:page>

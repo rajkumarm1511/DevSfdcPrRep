@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Bugs identified in the testing</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Assigned_To__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Defect to whom assigned</description>
+        <externalId>false</externalId>
+        <inlineHelpText>To whom the defect assigned for the review</inlineHelpText>
+        <label>Assigned To</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Defects</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Attributed_Phase__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Attributed Phase</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Coding and Unit testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Detailed Design</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Functional Specification</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Integration Testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Planing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Project Closure</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Steady State</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>System Testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Test Execution</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Requirement Gathering</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Test Preparation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>User Acceptance Testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Cause_of_Defect__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Root cause for the issue</inlineHelpText>
+        <label>Cause of Defect</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Incomplete Input</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inadequate Testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inadequate Documentation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incomplete Standards</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lack of adequate Time</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lack of Training</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lack of Technical Knowledge</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Others</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Close_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Defect when closed</description>
+        <externalId>false</externalId>
+        <label>Close Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Close_Month__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Defect Close month. this is auto populated by the trigger.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Should not visible in the layout</inlineHelpText>
+        <label>Close Month</label>
+        <length>9</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Defect_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Defect Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Review-Requirement</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Review-Design</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Review-Test Plan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Review-Code</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Review-Test Execution</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Clear description of the defect identified</description>
+        <externalId>false</externalId>
+        <label>Detail</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>20</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Detected_Cycle__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Cycle in which the defect identified</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Actual Cycle on which the defect has been identified</inlineHelpText>
+        <label>Detected Cycle</label>
+        <referenceTo>Cycle__c</referenceTo>
+        <relationshipLabel>Defects Detected</relationshipLabel>
+        <relationshipName>Defects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Detected_Release_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Detected Release Id is used to update the release lookup field</description>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISBLANK( Detected_Cycle__c )), Detected_Cycle__r.Release__r.Id,&apos;&apos; )</formula>
+        <label>Detected Release Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Detected_Release__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Release in which the defect is detected</description>
+        <externalId>false</externalId>
+        <label>Detected Release</label>
+        <referenceTo>Release__c</referenceTo>
+        <relationshipLabel>Defects Detected</relationshipLabel>
+        <relationshipName>Detected_Defects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Duration__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Close_Date__c -Open_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Aging</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Enhancement_Created__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This is true if there is an enhancement already created.</description>
+        <externalId>false</externalId>
+        <label>Enhancement Created?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Fixed_In_Phase__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Actual Phase in which the defect has been fixed.(ex- Design Phase)</inlineHelpText>
+        <label>Fixed In Phase</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Coding and Unit testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Detailed Design</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Functional Specification</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Integration Testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Planing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Project Closure</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Steady State</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>System Testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Test Execution</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Requirement Gathering</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Test Preparation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>User Acceptance Testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Found_In_Phase__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Actual phase in which the defect has been identified(ex- Requirement Gathering)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Actual phase in which the defect has been identified(ex- Requirement Gathering)</inlineHelpText>
+        <label>Found In Phase</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Coding and Unit testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Detailed Design</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Functional Specification</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Integration Testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Planing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Project Closure</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Steady State</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>System Testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Test Execution</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Requirement Gathering</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Test Preparation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>User Acceptance Testing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Is_Reproducible__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>whether this defect reproducible while testing multiple times</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is the defect occurred only one time or multiple times?.</inlineHelpText>
+        <label>Is Reproducible</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Open_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>CreatedDate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Open Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Open_Month__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Month of the Defect Open Date.. This is auto updated by the trigger</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This should not visible in the page layout</inlineHelpText>
+        <label>Open Month</label>
+        <length>9</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Priority__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Priority on the defect needs to be taken for the fix</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Priority for the defect among multiple defects(ex- Three Defects are in same severity level, then need to fix the issues based on the priority)</inlineHelpText>
+        <label>Priority</label>
+        <picklist>
+            <picklistValues>
+                <fullName>High</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Project_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Project Code of the defect</description>
+        <externalId>false</externalId>
+        <label>Project Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Severity__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Importance of the defect needs to fixed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Urgency of the issue to be fixed.</inlineHelpText>
+        <label>Severity</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Critical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>High</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Status_In_Image__c</fullName>
+        <deprecated>false</deprecated>
+        <description>To show the defect status in the form of alert images</description>
+        <externalId>false</externalId>
+        <formula>CASE(  TEXT(Status__c)  , &apos;New&apos;,IMAGE(&quot;servlet/servlet.FileDownload?file=01590000000SH9Q&quot;,&quot;New&quot;,20,20),&apos;ReOpen&apos;,IMAGE(&quot;servlet/servlet.FileDownload?file=01590000000SH9Q&quot;,&quot;ReOpen&quot;,20,20),&apos;In Progress&apos;,IMAGE(&quot;servlet/servlet.FileDownload?file=01590000000SH9V&quot;,&quot;In Progress&quot;,20,20),&apos;Fixed&apos;,IMAGE(&quot;servlet/servlet.FileDownload?file=01590000000SH9R&quot;,&quot;Fixed&quot;,20,20),&apos;Closed&apos;,IMAGE(&quot;servlet/servlet.FileDownload?file=01590000000SH9W&quot;,&quot;Closed&quot;,20,20),&apos;Differed&apos;,IMAGE(&quot;servlet/servlet.FileDownload?file=01590000000SH9W&quot;,&quot;Differed&quot;,20,20),&apos;Enhancement Needed&apos;,IMAGE(&quot;servlet/servlet.FileDownload?file=01590000000SH9W&quot;,&quot;Enhancement&quot;,20,20),&apos;N/A&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Fixing status of  the defect assigned to the development team</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Current working status of the defect</inlineHelpText>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>New</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fixed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Differed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Enhancement Needed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ReOpen</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Summary__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Brief summary on the defect Identified</description>
+        <externalId>false</externalId>
+        <label>Summary</label>
+        <length>100</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_Cycle__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Defect will be fixed in this release</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Development Cycle in which the defect is expected to fix</inlineHelpText>
+        <label>Target Cycle</label>
+        <referenceTo>Cycle__c</referenceTo>
+        <relationshipLabel>Defects Assigned</relationshipLabel>
+        <relationshipName>Fixing_Defects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Target_Release_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Target Release id is used to update the target release lookup field by writing the trigger.</description>
+        <externalId>false</externalId>
+        <formula>Target_Cycle__r.Release__r.Id</formula>
+        <inlineHelpText>This is hard Coded, needs to be changed.</inlineHelpText>
+        <label>Target Release Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_Release__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Target Release</label>
+        <referenceTo>Release__c</referenceTo>
+        <relationshipLabel>Defects Assigned</relationshipLabel>
+        <relationshipName>Defects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Test_Cycle__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Testing Cycle defined for project</inlineHelpText>
+        <label>Test Cycle</label>
+        <referenceTo>Test_Cycle__c</referenceTo>
+        <relationshipLabel>Defects</relationshipLabel>
+        <relationshipName>Defects</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Total_linked_entities__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Total number of entities associated with this defect(Total #Records in the linked entities related list)</inlineHelpText>
+        <label>Total linked entities</label>
+        <summaryForeignKey>Defect_Link__c.Parent_Defect__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <label>Defect</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Assigned_To__c</columns>
+        <columns>Close_Date__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Severity__c</columns>
+        <columns>Status_In_Image__c</columns>
+        <columns>Duration__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>D-{00000}</displayFormat>
+        <label>Defect ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Defects</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Summary__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Severity__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Assigned_To__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Severity__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Target_Cycle__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <lookupFilterFields>NAME</lookupFilterFields>
+        <lookupFilterFields>Target_Cycle__c</lookupFilterFields>
+        <searchFilterFields>Target_Cycle__c</searchFilterFields>
+        <searchFilterFields>Severity__c</searchFilterFields>
+        <searchResultsAdditionalFields>Assigned_To__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Detected_Cycle__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <sharingReasons>
+        <fullName>TTProjectGroup__c</fullName>
+        <label>TTProjectGroup</label>
+    </sharingReasons>
+    <validationRules>
+        <fullName>Assignment_Should_Not_Blank</fullName>
+        <active>true</active>
+        <description>Defect should be assigned to any Tester</description>
+        <errorConditionFormula>ISBLANK( Assigned_To__c )</errorConditionFormula>
+        <errorMessage>Defect must be assigned to User!</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cause_of_defect_mandatory</fullName>
+        <active>true</active>
+        <description>Before closing the defect, the cause of defect is mandatory</description>
+        <errorConditionFormula>AND((TEXT( Status__c ) = &apos;Closed&apos; ),(TEXT( Cause_of_Defect__c)=Null))</errorConditionFormula>
+        <errorMessage>Please enter the Cause of Defect, before closing the defect</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Defect_Status_Change</fullName>
+        <active>true</active>
+        <description>If the enhancement created, the defect status should not be changed.</description>
+        <errorConditionFormula>IF(Enhancement_Created__c &amp;&amp; ISCHANGED( Status__c ),True,false)</errorConditionFormula>
+        <errorMessage>Enhancement already created, can not change the status!</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Detected_Cycle_Project_Code</fullName>
+        <active>true</active>
+        <description>Detected cycle must be in the same project as target cycle</description>
+        <errorConditionFormula>IF(ISBLANK(Detected_Cycle__c),false,Detected_Cycle__r.Project_Code__c !=  Project_Code__c)</errorConditionFormula>
+        <errorDisplayField>Detected_Cycle__c</errorDisplayField>
+        <errorMessage>Please Choose the correct Project&apos;s Cycle!!.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Target_Cycle_Project_Code</fullName>
+        <active>true</active>
+        <description>Target Cycle must be in the same project.</description>
+        <errorConditionFormula>IF(NOT(ISBLANK( Target_Cycle__c )),NOT( Project_Code__c == Target_Cycle__r.Project_Code__c ),false)</errorConditionFormula>
+        <errorDisplayField>Target_Cycle__c</errorDisplayField>
+        <errorMessage>Choose the correct project&apos;s Target Cycle!!</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Test_Cycle_Required_for_any_Defects</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISBLANK( Test_Cycle__c )</errorConditionFormula>
+        <errorMessage>Please choose the Test Cycle!!.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Create_Enhancement</fullName>
+        <availability>online</availability>
+        <description>If the defect needs enhancement then the enhancement needs to be created from the defect page itself</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Create Enhancement</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/ttp__enhancementEdit?defectId={!Defect__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Link_Entity</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Link Entity</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ttp__addDefectLink?entityId={!Defect__c.Id}&amp;entity=defect</url>
+    </webLinks>
+</CustomObject>

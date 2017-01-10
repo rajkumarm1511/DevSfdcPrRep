@@ -1,0 +1,21 @@
+<apex:page controller="Simplefilter" sidebar="false">
+<apex:form >
+    <apex:pageBlock id="filter">
+        <apex:pageBlockSection >            
+                <apex:outputLabel value="Account Name"></apex:outputLabel>            
+                <apex:inputText value="{!name}"/>          
+                <apex:outputLabel value="Account Number"></apex:outputLabel>           
+            <apex:inputText value="{!accnum}"/>
+            <apex:commandButton value="Fetch" action="{!fetch}" reRender="Results"/>
+        </apex:pageBlocksection>
+    </apex:pageBlock>
+    
+    <apex:pageBlock id="Results">
+        <apex:pageBlockTable value="{!accounts}" var="acc">
+            <apex:column value="{!acc.Name}"/>
+            <apex:column value="{!acc.AccountNumber}"/>        
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    
+</apex:form>
+</apex:page>

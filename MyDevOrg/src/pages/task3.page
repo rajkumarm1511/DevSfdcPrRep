@@ -1,0 +1,36 @@
+<apex:page controller="Savedelete" tabStyle="account" sidebar="false">
+
+ <style>
+.contentStyle { font-size:12px; }
+.buttonStyle { width:10%; background-color:green; text-align:center; padding-top:4px; }
+</style>
+
+<script>
+
+          window.alert('Please Submit the Acount for Approval !');
+  </script>
+
+<apex:form >
+    <apex:pageBlock >
+        <apex:pageblockButtons >
+        <apex:commandButton value="Save" action="{!save}" styleClass="buttonStyle " style="background:#bfc676" onclick="alert('Enter a value')"/>
+       <apex:commandButton value="delete" action="{!ssdelete}" styleClass="buttonStyle " style="background:#bfc676" />
+        <apex:commandButton value="Cancel" action="{!cancel}" styleClass="buttonStyle " style="background:#bfc676" />
+        </apex:pageblockButtons>
+<apex:pageBlockSection columns="2">
+    <apex:inputField value="{!account.name}"/>
+    <apex:inputField value="{!account.AccountNumber}" />
+    <apex:inputField value="{!account.Site}" />
+    <apex:inputField value="{!account.AccountSource}" />
+    <apex:inputField value="{!account.Phone}" />
+    <apex:inputField value="{!account.Website}" />
+    <apex:inputField value="{!account.NumberofLocations__c}" />
+    <apex:inputField value="{!account.Industry}" />
+
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+
+</apex:form>
+  
+</apex:page>

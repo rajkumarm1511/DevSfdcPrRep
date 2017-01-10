@@ -1,0 +1,4 @@
+<apex:page StandardController="Lead" sidebar="false">
+
+  
+</apex:page>

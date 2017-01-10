@@ -1,0 +1,50 @@
+<apex:page standardController="Account" extensions="Fieldsetctr" tabStyle="Account" sidebar="false" id="pg">
+
+<script>
+function getSic()
+{
+   var a ='{!Accsite}';
+    alert('Hi'+a);
+    
+   if(a == null && a == '')
+   
+   {
+            alert('You did not eneter any value in AccountNumber');
+            return false;
+   }
+   else
+   {
+            alert(' You entered ::'+a);
+   }
+  
+}
+</script>
+
+
+
+<apex:form id="fm">
+<apex:pageBlock id="pgb">
+<apex:pageBlockSection id="pgbk1">
+<apex:selectList id="accts" value="{!account.name}" size="1" title="Account">
+<apex:selectOptions value="{!accts}"></apex:selectOptions>
+</apex:selectList>
+
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Detail Selection" id="pbgks2"> </apex:pageBlockSection>
+
+<center> <apex:commandButton value="Save" action="{!save}" onclick="getSic()" id="cmd1" /> 
+<apex:commandButton value="Delete" action="{!delete}" id="cmd2"/>
+<apex:commandButton value="Cancel" action="{!cancel}" id="cmd3"/> </center>
+
+<apex:pageblockSection id="pbgks3">
+<apex:repeat value="{!$objectType.Account.FieldSets.AccPopup}" var="acc" > 
+<apex:inputField value="{!Account[acc]}" />
+</apex:repeat>
+
+
+
+
+</apex:pageblockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

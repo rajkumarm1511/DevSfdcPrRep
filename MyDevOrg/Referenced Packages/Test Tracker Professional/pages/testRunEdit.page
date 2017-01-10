@@ -1,0 +1,24 @@
+<apex:page standardController="ttp__Test_Run__c" extensions="ttp.TTTestRunController" tabStyle="ttp__Test_Run__c" >
+    <apex:form >
+        <apex:pageBlock title="Next Run"  >
+        <apex:pagemessages />
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Begin Run" action="{!save}"/>
+                <apex:commandButton value="Cancel Run" action="{!cancel}"/>            
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Run Edit" columns="1"  >
+                <apex:inputField value="{!ttp__Test_Run__c.ttp__Is_Draft__c}"/>
+                <apex:inputField value="{!ttp__Test_Run__c.ttp__Start_Date__c}"/>
+                <apex:inputField value="{!ttp__Test_Run__c.ttp__Run_Method__c}"/>
+                <apex:inputField value="{!ttp__Test_Run__c.ttp__Status__c}"/>
+                
+                <apex:inputField value="{!ttp__Test_Run__c.ttp__Tester__c}" required="true"/>
+              <!--  <apex:inputField value="{!TT_Test_Run__c.TT_Test_Order__c}"/> -->
+                <apex:inputField value="{!ttp__Test_Run__c.ttp__Test_Scenario__c}"/>  
+                <apex:inputField value="{!ttp__Test_Run__c.ttp__Configuration__c}"/>      
+                <apex:inputField value="{!ttp__Test_Run__c.ttp__Target_Cycle__c}" rendered="false"/>            
+              
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

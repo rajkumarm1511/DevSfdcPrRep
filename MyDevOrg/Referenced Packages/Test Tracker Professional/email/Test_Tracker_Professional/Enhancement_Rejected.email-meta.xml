@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This Template is used for the rejection mail once the enhancement rejected</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Enhancement Rejected</name>
+    <style>none</style>
+    <subject>Enhancement Rejected</subject>
+    <type>text</type>
+</EmailTemplate>

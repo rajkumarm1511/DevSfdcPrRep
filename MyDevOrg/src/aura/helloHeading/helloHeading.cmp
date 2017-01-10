@@ -1,0 +1,5 @@
+<aura:component >
+    
+	<p> WELCOME </p>
+    
+</aura:component>

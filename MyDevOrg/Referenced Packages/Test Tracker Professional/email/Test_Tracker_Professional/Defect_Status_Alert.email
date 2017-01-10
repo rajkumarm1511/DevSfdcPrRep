@@ -1,0 +1,46 @@
+<messaging:emailTemplate subject="Defect Alert!" recipientType="User" relatedToType="ttp__Defect__c">
+<messaging:htmlEmailBody >
+<table border="1" style="background: rgb(250, 200, 200) none repeat scroll 0% 0%; font-weight: normal; font-size: 10pt; color: black; font-family: Verdana;" width="100%">
+<tr>
+<td>
+<table border="1" style="font-weight: bold; font-size: 15pt; color: blue; font-family: Verdana;">
+
+     <tr>
+        <td>Test Tracker Professional
+        </td>
+    </tr>
+</table>
+<p style="font-family:Verdana,Arial;font-size: 12px">
+Hi {!recipient.FirstName},
+<br/><br/>
+"{!IF(relatedTo.Status__c=='New','New Defect has been opened',IF(relatedTo.Status__c=='Closed','Defect has been Closed by '&relatedTo.LastModifiedBy.Name,'Defect Status has been changed to '&relatedTo.Status__c))}" . Details are shown below: 
+<br/><br/>
+<html>
+<body>
+<table style="background: rgb(240, 240, 255) none repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; border-collapse: collapse;font-weight: normal; font-size: 10pt; color: black; font-family: Verdana;" width="100%">
+<tr><td width="30"><strong>Defect ID:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!relatedTo.Name}"/></td></tr>
+<tr><td width="30"><strong>Severity:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!relatedTo.ttp__Severity__c}"/></td></tr>
+<tr><td width="30"><strong>Priority:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!relatedTo.ttp__Priority__c}"/></td></tr>
+<tr><td width="30"><strong>Status:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!relatedTo.ttp__Status__c}"/></td></tr>
+<tr><td width="30"><strong>Assignee:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!relatedTo.Assigned_To__r.Name}"/></td></tr>
+<tr><td width="30"><strong>Defect Raised By:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!relatedTo.CreatedBy.Name}"/></td></tr>
+<tr><td width="30"><strong>Is Reproducible?:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!If(relatedTo.ttp__Is_Reproducible__c==True,'YES','NO')}"/></td></tr>
+<tr><td width="30"><strong>Test Cycle:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!relatedTo.Test_Cycle__r.Name}"/></td></tr>
+<tr><td width="30"><strong>Target Cycle:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!relatedTo.Target_Cycle__r.Name}"/></td></tr>
+<tr><td width="30"><strong>Opened Date:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!relatedTo.ttp__Open_Date__c}"/></td></tr>
+<tr><td width="30"><strong>Summary:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!relatedTo.ttp__Summary__c}"/></td></tr>
+<tr><td width="30"><strong>Description:</strong></td><td width="20">&nbsp;</td><td><apex:outputText value="{!relatedTo.ttp__Description__c}"/></td></tr>
+<tr><td width="30"></td><td width="20"></td><td></td></tr>
+<tr><td width="30"></td><td width="20"></td><td></td></tr>
+<tr><td width="30"><strong>Defect Link:</strong></td><td width="20">&nbsp;</td><td><a href="https://login.salesforce.com/{!relatedTo.Id}">{!relatedTo.Name}</a></td></tr>
+</table>
+
+<br/><br/>
+</body>
+</html>
+</p>
+</td>
+</tr>
+</table>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

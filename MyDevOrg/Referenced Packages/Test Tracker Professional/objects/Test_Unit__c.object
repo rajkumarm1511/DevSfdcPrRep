@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>This is to maintain the modules in the testing.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Description__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Detail</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Is_Sub_Unit__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Units may split up into multiple sub units.</description>
+        <externalId>false</externalId>
+        <label>Is Sub Unit</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Parent_Test_Unit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Parent Test Unit</label>
+        <referenceTo>Test_Unit__c</referenceTo>
+        <relationshipLabel>Immediate Sub Units</relationshipLabel>
+        <relationshipName>Immediate_Sub_Units</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Project_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Test_Plan__r.Project_Code__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Project Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Subject__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This is the title of the test unit</description>
+        <externalId>false</externalId>
+        <label>Subject</label>
+        <length>30</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_Cycle__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Target cycle in which the test unit(Module) belongs.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Cycle in which the test module is going to be tested</inlineHelpText>
+        <label>Target Cycle</label>
+        <referenceTo>Cycle__c</referenceTo>
+        <relationshipLabel>Test Units</relationshipLabel>
+        <relationshipName>Test_Units</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Test_Plan__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Test Plan</label>
+        <referenceTo>Test_Plan__c</referenceTo>
+        <relationshipLabel>Test Units</relationshipLabel>
+        <relationshipName>Test_Units</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>Test Unit</label>
+    <nameField>
+        <displayFormat>TU-{00000}</displayFormat>
+        <label>Test Unit ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Test Units</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Cycle_And_Test_Unit_Project_Code</fullName>
+        <active>true</active>
+        <description>Cycle should belongs to same project as test unit</description>
+        <errorConditionFormula>Project_Code__c !=  Target_Cycle__r.Project_Code__c</errorConditionFormula>
+        <errorMessage>Target Cycle must be same project</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Hierarchy_Check</fullName>
+        <active>true</active>
+        <description>Test unit should be divided into only one level down not more than that</description>
+        <errorConditionFormula>NOT(ISBLANK( Parent_Test_Unit__r.Parent_Test_Unit__c ))</errorConditionFormula>
+        <errorMessage>No more hierarchy is allowed in the test unit</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Parent_Test_Unit_And_Test_Unit_Project</fullName>
+        <active>true</active>
+        <description>Cycle should belongs to same project as test unit</description>
+        <errorConditionFormula>IF(ISBLANK(Parent_Test_Unit__c),False,IF(Project_Code__c !=   Parent_Test_Unit__r.Project_Code__c,True,False))</errorConditionFormula>
+        <errorMessage>Parent Test Unit must be in the same project</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Get_Requirements</fullName>
+        <availability>online</availability>
+        <description>Select the requirements from the target cycle</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Get Requirements</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ttp__unitRequirementAssoc?entity=TestUnit&amp;id={!Test_Unit__c.Id}</url>
+    </webLinks>
+</CustomObject>

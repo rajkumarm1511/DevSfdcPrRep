@@ -1,0 +1,25 @@
+<apex:page standardController="Lead" showHeader="true" sidebar="false" tabstyle="Lead" cache="true">
+  <apex:form >
+  
+    <apex:pageBlock title="LeadConversioinCheck2">
+    
+    <apex:pageMessages ></apex:pageMessages>
+    
+    <apex:pageBlockButtons >
+      <apex:commandButton value="check" />
+      <apex:commandButton value="cancel" />
+    </apex:pageBlockButtons>
+    
+    <apex:pageBlockSection title="Lead conversion check" collapsible="true" columns="2">
+            <apex:outputLabel value="Member Number"/>
+            
+            
+            <apex:outputLabel value="Family ID"/>
+               
+        
+       
+    </apex:pageBlockSection>
+ 
+   </apex:pageBlock>
+ </apex:form>
+</apex:page>

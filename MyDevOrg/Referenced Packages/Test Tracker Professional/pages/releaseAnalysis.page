@@ -1,0 +1,72 @@
+<apex:page sidebar="false" standardController="ttp__Release__c" extensions="ttp.TTReleaseAnalysis" action="{!readGraphData}"  tabStyle="ttp__Release__c">
+
+<!-- Graph Page Section -->
+
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <apex:outputPanel >              
+            <table class="detailList" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr><td width="50%">    
+                    <div id="chart_div1.0"></div> 
+                </td><td width="50%">                   
+                    <div id="chart_div1.1"></div> 
+                </td>              
+                </tr>                 
+            </table> 
+                                                                       
+        <script type="text/javascript">
+                 
+              google.load("visualization", "1", {packages:["corechart"]});
+              google.setOnLoadCallback(drawChart);
+              
+              function drawChart() {              
+              //Test Cycle By Status
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Cycle Status');
+                data.addColumn('number', 'No. of Cycles');
+                
+                //Adding dynamic display. 
+                var testCycleByStatusArray=[<apex:outputText value="{!testCycleByStatusString}" />];
+                data.addRows(testCycleByStatusArray.length);                
+                var testCycleStatusData;
+                var i=0;
+                var temp=0;                
+                for(i=1; i<testCycleByStatusArray.length; i++)
+                {
+                    testCycleStatusData=testCycleByStatusArray[i].split(":");
+                    temp=i-1;
+                    data.setValue(parseInt(temp), 0, testCycleStatusData[0]);
+                    data.setValue(parseInt(temp), 1, parseInt(testCycleStatusData[1]));
+                }
+                
+                
+               var chart = new google.visualization.PieChart(document.getElementById('chart_div1.0'));
+               chart.draw(data, {width: 400, height: 220, title: 'Cycle Status', colors:['FFD700','8B4513','228B22'],chartArea:{left:40,top:40}});  
+               //chart.draw(data, options); 
+               
+               
+                ///Enhancement By Status
+                data = new google.visualization.DataTable();
+                data.addColumn('string', 'Enhancement Status');
+                data.addColumn('number', 'No. of Enhancements');
+                //Adding dynamic display. 
+                var enhancementByStatusArray=[<apex:outputText value="{!enhancementByStatusString}" />];
+                data.addRows(enhancementByStatusArray.length);                
+                var enhancementStatusData;
+                temp=0;                
+                for(i=1; i<enhancementByStatusArray.length; i++)
+                {
+                    enhancementStatusData=enhancementByStatusArray[i].split(":");
+                    temp=i-1;
+                    data.setValue(parseInt(temp), 0, enhancementStatusData[0]);
+                    data.setValue(parseInt(temp), 1, parseInt(enhancementStatusData[1]));
+                }
+                var chart = new google.visualization.PieChart(document.getElementById('chart_div1.1'));
+                chart.draw(data, {width: 400, height: 220, title: 'Enhancement Status', colors:['FFD700','696969','228B22','A52A2A'],chartArea:{left:40,top:40}});
+
+               
+                      
+            
+            }            
+            </script>                
+    </apex:outputPanel>
+</apex:page>

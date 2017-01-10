@@ -1,0 +1,8 @@
+Dear {!Requirement__c.Reviewer__c},
+      The following requirement has been submitted for your review. Please take the necessary action.
+
+Click the following link to access the requirement.
+{!Requirement__c.Link}
+
+Regards,
+Test Tracker

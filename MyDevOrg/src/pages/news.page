@@ -1,0 +1,32 @@
+<apex:page standardController="Phasing__c" recordSetVar="Phasings__c" tabStyle="Opportunity" sidebar="false" >
+
+<apex:form > 
+<apex:pageBlock title="RecordEdit">
+
+<apex:pageBlockButtons >
+<apex:commandButton value="Save" action="{!save}"/>
+</apex:pageBlockButtons>
+
+<apex:pageBlockSection > 
+<apex:dataList var="p" value="{!Phasing__c}" type="1"> </apex:dataList>
+<apex:panelGrid columns="2" bgcolor="lightgreen">
+<apex:commandLink action="{!previous}"/>Previous<apex:commandLink action="{!Next}"/>Next
+</apex:panelGrid>
+
+<apex:pageBlockTable value="{!Phasings__c}" var="ph">
+
+<table border="0">
+ <tr> <th>Product Name</th> <td align="center" colspan="3"><apex:column value="{!ph.Product_Name__c}"/></td> </tr>  
+ <tr> <th>Status</th> <td align="center" colspan="3"><apex:column value="{!ph.Status__c}"/></td> </tr> 
+ <tr> <th>Type</th> <td align="center" colspan="3"><apex:column value="{!ph.Type__c}"/></td> </tr>
+ <tr> <th bgcolor="#99CCFF"></th>  <td bgcolor="#99CCFF">Q1</td> <td bgcolor="#99CCFF">Q2</td> <td bgcolor="#99CCFF">Q3</td></tr>
+ <tr> <th>Week1</th>  <td>Raju</td> <td> Rajesh</td> <td>Ram</td> </tr>
+ <tr> <th>Week2</th> <td>Raju</td> <td> Rajesh</td> <td>Ram</td> </tr>
+ <tr> <th>Week3</th> <td>Raju</td> <td> Rajesh</td> <td>Ram</td> </tr>
+</table>
+
+</apex:pageBlockTable>
+ </apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

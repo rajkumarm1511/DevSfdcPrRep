@@ -1,0 +1,44 @@
+<apex:page controller="ttp.TTTestStepController" tabStyle="ttp__Test_Step__c">
+    <apex:form >
+        <apex:pageBlock title="Add New Steps" mode="edit">
+        <apex:pageMessages ></apex:pageMessages>
+        
+            <apex:pageblockButtons >
+                <apex:commandButton value="Add New Step" action="{!addNewStep}" rerender="listSteps" status="listSection"/>  
+                <apex:commandButton value="Remove Empty Step" action="{!clearCells}" rerender="listSteps"  status="listSection"/>
+                <apex:commandButton value="Submit" action="{!save}"/>                
+                <apex:commandLink value="Cancel" action="{!cancel}"/>                                                        
+            </apex:pageblockButtons>
+            <apex:pageblockSection title="Test Scenario Objective" columns="1">
+                <font color="Blue"><b>{!currentScenario.ttp__Objective__c}</b></font>
+            </apex:pageblockSection>
+
+            <apex:pageBlockSection columns="1" >
+            <apex:actionStatus id="listSection">
+                <apex:facet name="stop">
+                    <apex:outputPanel id="listStepsSection">
+                        <apex:pageBlockTable id="listSteps" value="{!listTestSteps}" var="step" width="100%" >
+                            <apex:column headerValue="Step#" >
+                                <apex:inputTextarea value="{!step.ttp__Step_Number__c}" cols="3" rows="4"/>
+                            </apex:column>
+                            <apex:column headerValue="Step Detail" >
+                                <apex:inputTextarea value="{!step.ttp__Step_Detail__c}" cols="50" rows="4"/>
+                            </apex:column>
+                            <apex:column headerValue="Expected Behavior">
+                                <apex:inputTextarea value="{!step.ttp__Expected_Behavior__c}" cols="50" rows="4"/>
+                            </apex:column>                   
+                            <apex:column headerValue="Test Data" >
+                                <apex:inputTextarea value="{!step.ttp__Test_Data__c}" cols="50" rows="4"/> 
+                            </apex:column>                                                                             
+                        </apex:pageBlockTable>
+                     </apex:outputPanel>
+                 </apex:facet>
+                 <apex:facet name="start">
+                     <apex:image url="{!URLFOR($Resource.ttp__TT_Images,'TTPageLoadImg.gif')}" width="25" height="25" alt="Opening" />     
+                 </apex:facet>    
+             </apex:actionStatus>                        
+            </apex:pageBlockSection>
+        
+        </apex:pageBlock>  
+    </apex:form>    
+</apex:page>

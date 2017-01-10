@@ -1,0 +1,26 @@
+<apex:page standardController="Phasing__c" recordSetVar="Phasings__c" tabStyle="Phasing__c" sidebar="false">
+<apex:form >
+<apex:pageBlock title="OpportunityProducts" mode="edit">
+
+<apex:pageblockButtons >
+<apex:commandButton value="Save" action="{!save}" onclick="prompt('Enter any value to continue')"/>
+</apex:pageblockButtons>
+
+<apex:pageBlockSection >
+<apex:panelGrid columns="2" bgcolor="lightgreen">
+<apex:commandLink action="{!previous}"/>Previous
+<apex:commandLink action="{!Next}"/>Next
+</apex:panelGrid>
+</apex:pageBlockSection>
+
+<apex:pageBlockTable value="{!Phasings__c}" var="ph">
+<apex:column value="{!ph.Product_Name__c}"/>
+<apex:column value="{!ph.Status__c}"/>
+<apex:column headerValue="Type"/> <apex:inputfield value="{!ph.Type__c}"/>
+<apex:column />
+</apex:pageBlockTable>
+
+</apex:pageBlock>
+</apex:form>
+
+</apex:page>

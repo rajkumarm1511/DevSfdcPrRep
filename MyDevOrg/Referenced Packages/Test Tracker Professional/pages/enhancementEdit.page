@@ -1,0 +1,20 @@
+<apex:page standardController="ttp__Enhancement__c" extensions="ttp.TTEnhancementController" >
+    <apex:form >
+        <apex:pageBlock >
+        <apex:pageblockButtons >
+            <apex:commandButton value="Save" action="{!save}"/>
+            <apex:commandButton value="Cancel" action="{!cancel}"/>            
+        </apex:pageblockButtons>
+        <apex:pageMessages />
+            <apex:pageblockSection title="Informations" columns="1" >
+                <apex:inputField value="{!ttp__Enhancement__c.Name}" required="true"/>
+                <apex:inputField value="{!ttp__Enhancement__c.ttp__Target_Release__c}" required="true"/>                            
+                <apex:inputField value="{!ttp__Enhancement__c.ttp__Defect__c}" rendered="true"/>                                      
+            </apex:pageblockSection>
+            <apex:pageblockSection title="Clear Informations" columns="1" >
+                <apex:inputTextarea value="{!ttp__Enhancement__c.ttp__Enhancement_Detail__c}" richText="true"/>        
+            </apex:pageblocksection>
+        
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

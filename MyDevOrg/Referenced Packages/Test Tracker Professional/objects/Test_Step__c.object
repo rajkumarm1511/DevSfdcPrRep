@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Steps to test a specific test scenario</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Actual_Behavior__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Actual result</inlineHelpText>
+        <label>Actual Behavior</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Behavior__c</fullName>
+        <deprecated>false</deprecated>
+        <description>How the system should perform as per the requirement</description>
+        <externalId>false</externalId>
+        <inlineHelpText>How the system should react</inlineHelpText>
+        <label>Expected Behavior</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Project_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Test_Scenario__r.Project_Code__c),Test_Run__r.Project_Code__c,Test_Scenario__r.Project_Code__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Project Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Result_Image__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IMAGE(CASE(TEXT(Result__c ), &apos;Passed&apos;, &apos;servlet/servlet.FileDownload?file=01590000000Rq4k&apos;,&apos;Failed&apos;, &apos;servlet/servlet.FileDownload?file=01590000000Rq4p&apos;,&apos;&apos;),&apos;N/A&apos;,20,20)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Result</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Result__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Final execution result of this step</inlineHelpText>
+        <label>Result</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Passed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Failed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Others</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Source__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Source</label>
+        <referenceTo>Test_Step__c</referenceTo>
+        <relationshipLabel>Test Steps</relationshipLabel>
+        <relationshipName>Test_Steps</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Step_Detail__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Detailed step for the Particular step</description>
+        <externalId>false</externalId>
+        <label>Step Detail</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Step_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Step Number is the test scenario</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Order of the execution sequence</inlineHelpText>
+        <label>Step Number</label>
+        <length>15</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Test_Data__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Test Data or Step input what the tester used to test this step</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Test Data used to test the step</inlineHelpText>
+        <label>Test Data</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Test_Run__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>To differentiate the test results for each run, assigning the test steps to test run also</description>
+        <externalId>false</externalId>
+        <label>Test Run</label>
+        <referenceTo>Test_Run__c</referenceTo>
+        <relationshipLabel>Test Steps</relationshipLabel>
+        <relationshipName>Test_Steps</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Test_Scenario__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Test Scenario</label>
+        <referenceTo>Test_Scenario__c</referenceTo>
+        <relationshipLabel>Test Steps</relationshipLabel>
+        <relationshipName>Test_Steps</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Test Step</label>
+    <nameField>
+        <displayFormat>{00000}</displayFormat>
+        <label>Step ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Test Steps</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Step_Number__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Actual_Behavior__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Expected_Behavior__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Result__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Step_Detail__c</customTabListAdditionalFields>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>Forward</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Step_Number__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Step_Detail__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Expected_Behavior__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Step_Detail__c</searchFilterFields>
+        <searchFilterFields>Expected_Behavior__c</searchFilterFields>
+        <searchFilterFields>Result__c</searchFilterFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <sharingReasons>
+        <fullName>TTProjectGroup__c</fullName>
+        <label>TTProjectGroup</label>
+    </sharingReasons>
+    <webLinks>
+        <fullName>Work_with_step</fullName>
+        <availability>online</availability>
+        <description>Add new Steps with the test scenario</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Work with step(s)</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/ttp__newTestSteps?sceId={!Test_Scenario__c.Id}</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,17 @@
+<apex:page controller="SearchQuery">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Search Criteria">
+                <apex:outputLabel value="Enter any Value"></apex:outputLabel>
+                <apex:inputText value="{!nameQuery}"/>
+                <apex:commandButton action="{!executeSearch}" value="Search Here"/>                    
+            </apex:pageBlockSection>
+            <apex:pageBlockTable value="{!accounts}" var="acc">
+                <apex:column headerValue="Account Name">
+                <apex:outputLink value="/{!acc.id}/e?retURL={!URLENCODE('/apex/SearchQuery?query='+nameQuery)}">{!acc.name}</apex:outputLink>
+                </apex:column>
+                <apex:column value="{!acc.BillingStreet}"> </apex:column>                           
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

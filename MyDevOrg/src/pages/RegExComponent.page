@@ -1,0 +1,12 @@
+<apex:page controller="InputComponentController">
+    <apex:form >
+       <apex:pagemessages ></apex:pagemessages>
+        <apex:pageBlock title="Customer Information">
+             <apex:Pageblocksection >
+                <apex:outputLabel value="Enter Customer ID"></apex:outputLabel>
+                <apex:inputText value="{!CustomerID}" />
+                <center> <apex:commandButton value="Save" action="{!Save}" style="width:100px; height:25px; font-size:12px; background:yellow;"/> </center>
+            </apex:Pageblocksection>
+        </apex:pageBlock>   
+    </apex:form>
+</apex:page>

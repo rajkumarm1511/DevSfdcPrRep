@@ -1,0 +1,89 @@
+<apex:page title="Execute Steps" controller="ttp.TTTestExecutionController" showHeader="false" sidebar="false"  action="{!retriveTestSteps}" tabStyle="ttp__Test_Step__c"    >
+  <!-- Javascript Section -->
+  
+<apex:form id="runStepsFrm" >
+    <script type="text/javascript">
+    
+        function closeWindow(){ 
+            var status="<apex:outputText value="{!currentRun.ttp__Status__c}" /> ";  
+            if(status.trim()=="Canceled"){
+                alert("WARNING: Results will not be saved for the Canceled Run!!");    
+            }else{
+                alert("Execution details are successfully recorded, Please refresh the Run detail page to see the recorded results!"); 
+            }            
+            window.top.close();
+            //alert("Parent Window"+window.opener);
+            //window.opener.reload();  
+            //window.close();
+            
+        }
+
+         
+    </script>          
+        
+        <apex:pageBlock title="Run Execution"  >    
+        <apex:messages />           
+            <center><apex:outputText rendered="{!(CurrentRun.ttp__Status__c=='Canceled')}"><apex:image url="{!URLFOR($Resource.ttp__TT_Images, 'TTWarningImg.jpeg')}" width="35" height="35" alt="WARNING" /><font size="3" color="Red" face="verdana">  This Run has been canceled!!</font></apex:outputText></center> <br/>               
+        <apex:pageBlockSection title="Scenario Objective" columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:outputText ><b><font color="Green">{!currentRun.ttp__Test_Scenario__r.ttp__Objective__c}</font></b></apex:outputText>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+            <apex:outputPanel id="listTestSteps">
+            <apex:pageBlockSection columns="1" title="List of Steps to execute">
+                <apex:pageBlockSectionItem >
+                     
+                    <apex:pageBlockTable value="{!runSteps}" var="step" id="stepTable">
+                        <apex:column >            
+                            <apex:inputCheckbox Value="{!step.isChecked}"> 
+                                <apex:actionSupport event="onclick" rerender="stepTable,detailArea" action="{!uncheckPrimaryCheckbox}" status="detailStatus"/>
+                            </apex:inputCheckbox>
+                        </apex:column>   
+                        <!-- <apex:column value="{!step.testStep.Name}"/>                         -->
+                        
+                        <apex:column value="{!step.testStep.ttp__Step_Number__c}"/>                        
+                        <apex:column value="{!step.testStep.ttp__Step_Detail__c}"/> 
+                        <apex:column value="{!step.testStep.ttp__Test_Run__c}"/>
+                        <apex:column value="{!step.testStep.ttp__Result__c}"/>                       
+                    </apex:pageBlockTable>                   
+                 </apex:pageBlockSectionItem>     
+            </apex:pageBlockSection>                
+            </apex:outputPanel>   
+            <apex:actionStatus id="detailStatus" >
+            <apex:facet name="stop">
+                <apex:outputPanel id="detailArea">
+                    <apex:tabPanel >
+                        <apex:tab name="briefDetail" label="Detail"  title="Detail" switchType="ajax" >                                                  
+                         <apex:pageBlockSection >
+                             <apex:pageBlockSectionItem >                                  
+                                 <apex:outputLabel >Expected Behavior</apex:outputLabel>
+                                 <apex:inputTextarea value="{!checkedInstance.testStep.ttp__Expected_Behavior__c}"  readonly="true"  style="margin-top: 2px; margin-bottom: 2px; height: 100px; margin-left: 2px; margin-right: 2px; width: 300px"/>
+                             </apex:pageBlockSectionItem>   
+                             <apex:pageBlockSectionItem > 
+                                 <apex:outputLabel >Actual Behavior</apex:outputLabel>
+                                 <apex:inputTextarea value="{!checkedInstance.testStep.ttp__Actual_Behavior__c}" style="margin-top: 2px; margin-bottom: 2px; height: 100px; margin-left: 2px; margin-right: 2px; width: 300px" />
+                             </apex:pageBlockSectionItem>                       
+                         </apex:pageBlockSection>                               
+                        </apex:tab>
+                        <apex:tab name="testData" label="Test Data"  title="Test Data" switchType="ajax" >
+                            <apex:inputTextarea value="{!checkedInstance.testStep.ttp__Test_Data__c}"  style="margin-top: 2px; margin-bottom: 2px; height: 100px; margin-left: 2px; margin-right: 2px; width: 300px"/>                        
+                        </apex:tab>
+                    </apex:tabPanel>                                
+                </apex:outputPanel> 
+               </apex:facet>
+               <apex:facet name="start">
+                   <apex:image url="{!URLFOR($Resource.ttp__TT_Images,'TTPageLoadImg.gif')}" width="25" height="25" alt="Opening" />    
+               </apex:facet>
+            </apex:actionStatus>   
+            <apex:pageBlockButtons Location="bottom">
+                <apex:commandButton value="Pass Step" action="{!passStep}" rerender="listTestSteps"/>
+                <apex:commandButton value="Fail Step" action="{!failStep}" rerender="listTestSteps"/>
+                <apex:commandButton value="Pass All Steps" action="{!passAllSteps}" rerender="listTestSteps"/>
+                <apex:commandButton value="Fail All Steps" action="{!failAllSteps}" rerender="listTestSteps"/>
+                <apex:commandButton value="Submit"  action="{!commitDML}" oncomplete="closeWindow();"/>                                
+                <apex:commandLink onclick="javascript:window.top.close();" value="Cancel"/>                                                 
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>        
+    
+</apex:page>
